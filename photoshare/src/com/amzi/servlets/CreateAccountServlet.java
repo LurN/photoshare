@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.amzi.dao.LoginDao;
 
-public class LoginServlet extends HttpServlet {
+public class CreateAccountServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 
 		String name = request.getParameter("username");
 		String pass = request.getParameter("userpass");
+		String email = request.getParameter("email");
 
 		HttpSession session = request.getSession(false);
 
@@ -32,12 +33,12 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("name", name);
 
 		// Valid username/password
-		if(LoginDao.validate(name, pass)) {
+		if(LoginDao.createAccount(name, pass, email)) {
 			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 			rd.forward(request, response);
 		} else {
 			// Invalid username/password
-			out.print("<p style=\"color:red\">Incorrect username or password.</p>");
+			out.print("<p style=\"color:red\">Account already exists.</p>");
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}

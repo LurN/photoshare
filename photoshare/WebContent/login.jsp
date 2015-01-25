@@ -15,7 +15,7 @@
 
 <body onload="start()">
 <h1 id="title">PhotoShare</h1>
-    <form action="loginServlet" method="post">
+    <form id="actionForm" action="loginServlet" method="post">
         <fieldset id="loginFieldset">
             <legend id="loginCreateAccount"> Login </legend>
             <table>
