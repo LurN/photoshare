@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+/* Not selectable / disable highlighting:
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	outline-style:none;
+ */
+
+#title {
+	text-align: center;
+	color: #FF800B;
+	pointer-events: none;
+}
+
+#loginFieldset {
+	width: 16%;
+	margin: 0 auto;
+}
+
+#loginField {
+	pointer-events: none;
+}
+
+#emailField {
+	display: none;
+}
+
+#changeButton {
+	background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#signupButton {
+	display: none;
+}
