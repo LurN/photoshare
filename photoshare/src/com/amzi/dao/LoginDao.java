@@ -14,11 +14,11 @@ public class LoginDao {
 		ResultSet rs = null;
 
 		// Connection parameters
-		String url = "jdbc:mysql://localhost:8888/";
+		String url = "jdbc:mysql://localhost:3306/";
 		String dbName = "form";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "root";
-		String password = "spyd3rt3ch";
+		String password = "admin";
 
 		try {
 			Class.forName(driver).newInstance();
@@ -69,11 +69,11 @@ public class LoginDao {
 		ResultSet rs = null;
 
 		// Connection parameters
-		String url = "jdbc:mysql://localhost:8888/";
+		String url = "jdbc:mysql://localhost:3306/";
 		String dbName = "form";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "root";
-		String password = "spyd3rt3ch";
+		String password = "admin";
 
 		try {
 			Class.forName(driver).newInstance();
@@ -83,8 +83,7 @@ public class LoginDao {
 			pst = conn
 					.prepareStatement("select * from login where user=?");
 			pst.setString(1, name);
-			pst.setString(2, pass);
-			pst.setString(3, email);
+			
 
 			rs = pst.executeQuery();
 			status = rs.next();

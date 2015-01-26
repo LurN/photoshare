@@ -33,7 +33,7 @@ public class CreateAccountServlet extends HttpServlet {
 			session.setAttribute("name", name);
 
 		// Valid username/password
-		if(LoginDao.createAccount(name, pass, email)) {
+		if(!LoginDao.createAccount(name, pass, email)) {
 			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 			rd.forward(request, response);
 		} else {
