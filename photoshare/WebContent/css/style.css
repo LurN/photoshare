@@ -291,7 +291,8 @@ p.change_link{
 }
 /** Styling both forms **/
 #register, 
-#login{
+#login,
+#updateFields{
 	position: absolute;
 	top: 0px;
 	width: 88%;	
@@ -310,7 +311,8 @@ p.change_link{
 	z-index: 21;
 	opacity: 0;
 }
-#login{
+#login,
+#updateFields{
 	z-index: 22;
 }
 #toregister:target ~ #wrapper #register,
