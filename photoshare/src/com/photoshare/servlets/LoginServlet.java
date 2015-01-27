@@ -1,4 +1,4 @@
-package com.amzi.servlets;
+package com.photoshare.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,12 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.amzi.dao.LoginDao;
+import com.photoshare.dao.AccountDao;
+//import com.photoshare.models.Account;
 
-public class CreateAccountServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private AccountDao ldao;
 
+	
+	public LoginServlet(){
+		ldao = new AccountDao();
+	}
+	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,7 +32,7 @@ public class CreateAccountServlet extends HttpServlet {
 
 		String name = request.getParameter("username");
 		String pass = request.getParameter("userpass");
-		String email = request.getParameter("email");
+		
 
 		HttpSession session = request.getSession(false);
 
@@ -33,12 +40,12 @@ public class CreateAccountServlet extends HttpServlet {
 			session.setAttribute("name", name);
 
 		// Valid username/password
-		if(!LoginDao.createAccount(name, pass, email)) {
-			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+		if(ldao.validate(name, pass)) {
+			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 			rd.forward(request, response);
 		} else {
 			// Invalid username/password
-			out.print("<p style=\"color:red\">Account already exists.</p>");
+			out.print("<p style=\"color:red\">Incorrect username or password.</p>");
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}
