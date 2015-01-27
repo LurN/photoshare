@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String name = request.getParameter("username");
-		String pass = request.getParameter("userpass");
+		String pass = request.getParameter("password");
 
 		HttpSession session = request.getSession(false);
 
@@ -46,4 +46,31 @@ public class LoginServlet extends HttpServlet {
 
 		out.close();
 	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException{
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
+		String name = request.getParameter("username");
+		String pass = request.getParameter("password");
+
+		HttpSession session = request.getSession(false);
+
+		if (session != null)
+			session.setAttribute("name", name);
+
+		// Valid username/password
+		if(LoginDao.validate(name, pass)) {
+			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+			rd.forward(request, response);
+		} else {
+			// Invalid username/password
+			out.print("<p style=\"color:red\">Incorrect username or password.</p>");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.include(request, response);
+		}
+
+		out.close();
+			}
 }
