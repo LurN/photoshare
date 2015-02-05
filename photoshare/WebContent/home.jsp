@@ -6,7 +6,7 @@
 			      <ul id="tiles">
 			        <!-- These are our grid blocks -->
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img1.jpg" width="100%" height="100%">
+			        	<img src="images/img1.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -25,7 +25,7 @@
 			        	</div>
 			        </li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img2.jpg" width="100%" height="100%">
+			        	<img src="images/img2.jpg" width="100%" height="auto">
 						<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -44,7 +44,7 @@
 			        	</div>
 					</li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img3.jpg" width="100%" height="100%">
+			        	<img src="images/img3.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -63,7 +63,7 @@
 			        	</div>
 			        </li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img4.jpg" width="100%" height="100%">
+			        	<img src="images/img4.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -83,7 +83,7 @@
 			        </li>
 			        <!----//--->
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img4.jpg" width="100%" height="100%">
+			        	<img src="images/img4.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -102,7 +102,7 @@
 			        	</div>
 			        </li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img3.jpg" width="100%" height="100%">
+			        	<img src="images/img3.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -121,7 +121,7 @@
 			        	</div>
 			        </li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img2.jpg" width="100%" height="100%">
+			        	<img src="images/img2.jpg" width="100%" height="auto">
 						<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -140,7 +140,7 @@
 			        	</div>
 					</li>
 					  <li onclick="location.href='single-page.html';">
-			        	<img src="images/img1.jpg" width="100%" height="100%">
+			        	<img src="images/img1.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -160,7 +160,7 @@
 			        </li>
 			        <!----//--->
 			         <li onclick="location.href='single-page.html';">
-			        	<img src="images/img1.jpg" width="100%" height="100%">
+			        	<img src="images/img1.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -179,7 +179,7 @@
 			        	</div>
 			        </li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img2.jpg" width="100%" height="100%">
+			        	<img src="images/img2.jpg" width="100%" height="auto">
 						<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -198,7 +198,7 @@
 			        	</div>
 					</li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img3.jpg" width="100%" height="100%">
+			        	<img src="images/img3.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
@@ -217,7 +217,7 @@
 			        	</div>
 			        </li>
 			        <li onclick="location.href='single-page.html';">
-			        	<img src="images/img4.jpg" width="100%" height="100%">
+			        	<img src="images/img4.jpg" width="100%" height="auto">
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h3><a href="#">Animation films</a></h3>
