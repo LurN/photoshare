@@ -29,9 +29,9 @@ public class CreateAccountServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		String name = request.getParameter("username");
-		String pass = request.getParameter("userpass");
-		String email = request.getParameter("useremail");
+		String name = request.getParameter("usernamesignup");
+		String pass = request.getParameter("passwordsignup");
+		String email = request.getParameter("emailsignup");
 
 		HttpSession session = request.getSession(false);
 
