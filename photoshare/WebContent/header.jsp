@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		</script>
+		
 		<!----webfonts---->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 		<!----//webfonts---->
@@ -67,8 +67,8 @@
 										<li><a href="#"><span>Clients</span></a></li>
 										<li><a href="#"><span>Blog</span></a></li>
 										<li><a href="contact.html"><span>Contact</span></a></li>
-										<div class="clear"> </div>
 									</ul>
+									<div class="clear"> </div>
 								</div>
 								<a class="boxclose" id="boxclose"> <span> </span></a>
 							</div>                                  
