@@ -40,7 +40,7 @@ public class CreateAccountServlet extends HttpServlet {
 
 		// Valid username/password
 		if(ldao.createAccount(name, pass, email)) {
-			RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 			rd.forward(request, response);
 		} else {
 			// Invalid username/password
