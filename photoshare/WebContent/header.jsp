@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>Pinball Website Template | Home :: w3layouts</title>
+		<title>PhotoShare Home :: <%=session.getAttribute("name")%></title>
 		<link href="css/style2.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
