@@ -93,24 +93,26 @@
 <!-- Modal upload photos box -->
 <div id="openModal" class="modalDialog">
 	<div>
-		<a href="#close" title="Close" class="close">X</a>
-		<table id="file_upload_table">
-			<tr>Create new album</tr>
-			<tr>
-				<td style="vertical-align: top;">
-					<input type="text" placeholder="Album name" /><br /><br /><br />
-					<input type="submit" id="submit_album" value="Make album" />
-				</td>
-				<td id="url_upload_list">
-					<label for="image_upload">Select your photos</label>
-					<input type="file" name="image_upload" id="image_upload_button" onchange="fileSelected();" multiple />
-					<br /><br />Or<br /><br />
-					<input type="text" class="url_upload" placeholder="URL to photo" />
-					&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
-					&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
-				</td>
-			</tr>
-		</table>
+		<a href="#close" title="Close" class="close" onclick="resetForm('image_upload_button');createNewAlbumModal();">X</a>
+		<form id="upload_form">
+			<table id="file_upload_table">
+				<tr>Create new album</tr>
+				<tr>
+					<td style="vertical-align: top;">
+						<input id="album_name" type="text" placeholder="Album name" /><br /><br /><br />
+						<input type="submit" id="submit_album" value="Make album" />
+					</td>
+					<td id="url_upload_list">
+						<label for="image_upload">Select your photos</label>
+						<input type="file" name="image_upload" id="image_upload_button" multiple />
+						<br /><br />Or<br /><br />
+						<input type="text" class="url_upload" placeholder="URL to photo" />
+						&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
+						&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>
 
@@ -139,8 +141,29 @@ function removeURLUpload() {
 	
 	list.removeChild(list.lastChild);
 	
-	if(urlUploadCount === 1)
+	if(urlUploadCount === 1) {
 		document.getElementById("remove_url_upload").style.display = "none";
+		
+		return false;
+	} else {
+		return true;
+	}
+};
+
+function createNewAlbumModal() {
+	document.getElementById("album_name").value = "";
+	
+	// Remove all URL upload fields
+	while(urlUploadCount > 1)
+		removeURLUpload();
+	
+	document.getElementsByClassName("url_upload")[0].value = "";
+};
+
+function resetForm(id) {
+	var form = document.getElementById(id);
+	
+	form.value = null;
 };
 </script>
 		<!---//End-header---->
