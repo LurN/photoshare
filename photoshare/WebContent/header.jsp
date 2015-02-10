@@ -15,6 +15,9 @@
 		<!----//webfonts---->
 		<!-- Global CSS for the page and tiles -->
   		<link rel="stylesheet" href="css/main.css">
+  		<link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/login.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
@@ -62,8 +65,8 @@
 								<div class="menu_box_list">
 									<ul>
 										<li><a href="home.jsp"><span>home</span></a></li>
-										<li><a href="#"><span>create album</span></a></li>
-										<li><a href="#"><span>Works</span></a></li>
+										<li><a href="#"><span>Create album</span></a></li>
+										<li><a href="#"><span>Categories</span></a></li>
 										<li><a href="#"><span>Clients</span></a></li>
 										<li><a href="#"><span>Blog</span></a></li>
 										<li><a href="contact.html"><span>Contact</span></a></li>
