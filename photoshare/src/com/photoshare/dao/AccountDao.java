@@ -1,22 +1,20 @@
 package com.photoshare.dao;
 
 import java.sql.Connection;
-
-import java.util.Random;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 
 import com.photoshare.utilities.DatabaseUtils;
 
 public class AccountDao {
 	
 	private Connection conn;
-	private Random rand;
+	
 	
 	public AccountDao(){
 		conn = DatabaseUtils.getConnection();
-		rand = new Random();
+		
 	}
 	
 	public boolean validate(String name, String pass) {
@@ -61,9 +59,9 @@ public class AccountDao {
 			status = rsCheck.next();
 			
 			if(!status)
-				pstAdd = conn.prepareStatement("INSERT INTO `form`.`account` (`idaccount`, `username`, `password`, `email`)"
+				pstAdd = conn.prepareStatement("INSERT INTO `form`.`account` (`accountCreationDate`, `username`, `password`, `email`)"
 						+ "VALUES (?, ?, ?, ?)");
-				pstAdd.setString(1, Integer.toString(rand.nextInt(5000)));
+				pstAdd.setString(1, new String(new Date(System.currentTimeMillis()).toString()));
 				pstAdd.setString(2, name);
 				pstAdd.setString(3, pass);
 				pstAdd.setString(4, email);
@@ -76,8 +74,8 @@ public class AccountDao {
 				}
 				
 		} catch (Exception e) {
-			System.out.println(e);
-		}
+			System.out.print(e);
+			}
 
 		return status;
 	}//createAccount end

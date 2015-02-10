@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		</script>
+		
 		<!----webfonts---->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 		<!----//webfonts---->
@@ -65,13 +65,13 @@
 								<div class="menu_box_list">
 									<ul>
 										<li><a href="home.jsp"><span>home</span></a></li>
-										<li><a href="#"><span>Create album</span></a></li>
-										<li><a href="#"><span>Categories</span></a></li>
+										<li><a href="#openModal"><span>create album</span></a></li>
+										<li><a href="#"><span>Works</span></a></li>
 										<li><a href="#"><span>Clients</span></a></li>
 										<li><a href="#"><span>Blog</span></a></li>
 										<li><a href="contact.html"><span>Contact</span></a></li>
-										<div class="clear"> </div>
 									</ul>
+									<div class="clear"> </div>
 								</div>
 								<a class="boxclose" id="boxclose"> <span> </span></a>
 							</div>                                  
@@ -80,7 +80,7 @@
 				</div>       	  
 				<div class="top-searchbar">
 					<form>
-						<input type="text" /><input type="submit" value="album_search" />
+						<input type="text" placeholder="Search albums" /><input type="submit" value="album_search" />
 					</form>
 				</div>
 				<div class="userinfo">
@@ -93,4 +93,156 @@
 				<div class="clear"> </div>
 			</div>
 		</div>
+<!-- Modal upload photos box -->
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close" onclick="resetForm('image_upload_button');createNewAlbumModal();">X</a>
+		<form id="upload_form">
+			<table id="file_upload_table">
+				<tr>Create new album</tr>
+				<tr>
+					<td style="vertical-align: top;">
+						<input id="album_name" type="text" placeholder="Album name" /><br /><br /><br />
+						<input type="submit" id="submit_album" value="Make album" />
+					</td>
+					<td id="url_upload_list">
+						<label for="image_upload">Select your photos</label>
+						<input type="file" name="image_upload" id="image_upload_button" multiple />
+						<br /><br />Or<br /><br />
+						<input type="text" class="url_upload" placeholder="URL to photo" />
+						&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
+						&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+
+<!-- Upload files script -->
+<script>
+var urlUploadCount = 1;
+
+function addURLUpload() {
+	++urlUploadCount;
+	
+	var url_upload = document.createElement("input");
+	url_upload.class = "url_upload";
+	url_upload.placeholder = "URL to photo";
+	
+	var list = document.getElementById("url_upload_list");
+	
+	list.appendChild(url_upload);
+	
+	document.getElementById("remove_url_upload").style.display = "inline-block";
+};
+
+function removeURLUpload() {
+	--urlUploadCount;
+	
+	var list = document.getElementById("url_upload_list");
+	
+	list.removeChild(list.lastChild);
+	
+	if(urlUploadCount === 1) {
+		document.getElementById("remove_url_upload").style.display = "none";
+		
+		return false;
+	} else {
+		return true;
+	}
+};
+
+function createNewAlbumModal() {
+	document.getElementById("album_name").value = "";
+	
+	// Remove all URL upload fields
+	while(urlUploadCount > 1)
+		removeURLUpload();
+	
+	document.getElementsByClassName("url_upload")[0].value = "";
+};
+
+function resetForm(id) {
+	var form = document.getElementById(id);
+	
+	form.value = null;
+};
+</script>
+<!-- Modal upload photos box -->
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close" onclick="resetForm('image_upload_button');createNewAlbumModal();">X</a>
+		<form id="upload_form">
+			<table id="file_upload_table">
+				<tr>Create new album</tr>
+				<tr>
+					<td style="vertical-align: top;">
+						<input id="album_name" type="text" placeholder="Album name" /><br /><br /><br />
+						<input type="submit" id="submit_album" value="Make album" />
+					</td>
+					<td id="url_upload_list">
+						<label for="image_upload">Select your photos</label>
+						<input type="file" name="image_upload" id="image_upload_button" multiple />
+						<br /><br />Or<br /><br />
+						<input type="text" class="url_upload" placeholder="URL to photo" />
+						&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
+						&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+
+<!-- Upload files script -->
+<script>
+var urlUploadCount = 1;
+
+function addURLUpload() {
+	++urlUploadCount;
+	
+	var url_upload = document.createElement("input");
+	url_upload.class = "url_upload";
+	url_upload.placeholder = "URL to photo";
+	
+	var list = document.getElementById("url_upload_list");
+	
+	list.appendChild(url_upload);
+	
+	document.getElementById("remove_url_upload").style.display = "inline-block";
+};
+
+function removeURLUpload() {
+	--urlUploadCount;
+	
+	var list = document.getElementById("url_upload_list");
+	
+	list.removeChild(list.lastChild);
+	
+	if(urlUploadCount === 1) {
+		document.getElementById("remove_url_upload").style.display = "none";
+		
+		return false;
+	} else {
+		return true;
+	}
+};
+
+function createNewAlbumModal() {
+	document.getElementById("album_name").value = "";
+	
+	// Remove all URL upload fields
+	while(urlUploadCount > 1)
+		removeURLUpload();
+	
+	document.getElementsByClassName("url_upload")[0].value = "";
+};
+
+function resetForm(id) {
+	var form = document.getElementById(id);
+	
+	form.value = null;
+};
+</script>
 		<!---//End-header---->

@@ -41,8 +41,8 @@ public class LoginServlet extends HttpServlet {
 
 		// Valid username/password
 		if(ldao.validate(name, pass)) {
-			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("home.jsp");
+			
 		} else {
 			// Invalid username/password
 			out.print("<p style=\"color:red\">Incorrect username or password.</p>");
