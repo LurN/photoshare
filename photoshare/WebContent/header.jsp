@@ -77,7 +77,7 @@
 				</div>       	  
 				<div class="top-searchbar">
 					<form>
-						<input type="text" /><input type="submit" value="album_search" />
+						<input type="text" placeholder="Search albums" /><input type="submit" value="album_search" />
 					</form>
 				</div>
 				<div class="userinfo">
