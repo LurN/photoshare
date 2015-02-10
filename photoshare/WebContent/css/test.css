@@ -51,3 +51,9 @@
 }
 
 .close:hover { background: #00d9ff; }
+
+#create_album_button {
+	background: black;
+	color: orange;
+	font-size: 18px;
+}

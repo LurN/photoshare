@@ -3,14 +3,25 @@
 </head>
 <html>
 
-<a href="#openModal">Open Modal</a>
+<form action="#openModal">
+	<input type="submit" id="create_album_button" value="Create new album" />
+</form>
 
 <div id="openModal" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close">X</a>
-		<h2>Modal Box</h2>
-		<p>This is a sample modal box that can be created using the powers of CSS3.</p>
-		<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+		<table id="file_upload_table">
+			<tr><h2 style="text-align:left;">Create new album</h2></tr>
+			<tr>
+				<td>
+					<input type="text" placeholder="Album name" /><br />
+				</td>
+				<td>
+					<label for="image_upload">Select your photos</label>
+					<input type="file" name="image_upload" id="image_upload_button" onchange="fileSelected();" multiple />
+				</td>
+			</tr>
+		</table>
 	</div>
 </div>
 
