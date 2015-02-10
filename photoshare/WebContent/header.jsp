@@ -62,7 +62,7 @@
 								<div class="menu_box_list">
 									<ul>
 										<li><a href="home.jsp"><span>home</span></a></li>
-										<li><a href="#"><span>create album</span></a></li>
+										<li><a href="#openModal"><span>create album</span></a></li>
 										<li><a href="#"><span>Works</span></a></li>
 										<li><a href="#"><span>Clients</span></a></li>
 										<li><a href="#"><span>Blog</span></a></li>
@@ -90,4 +90,57 @@
 				<div class="clear"> </div>
 			</div>
 		</div>
+<!-- Modal upload photos box -->
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<table id="file_upload_table">
+			<tr>Create new album</tr>
+			<tr>
+				<td style="vertical-align: top;">
+					<input type="text" placeholder="Album name" /><br /><br /><br />
+					<input type="submit" id="submit_album" value="Make album" />
+				</td>
+				<td id="url_upload_list">
+					<label for="image_upload">Select your photos</label>
+					<input type="file" name="image_upload" id="image_upload_button" onchange="fileSelected();" multiple />
+					<br /><br />Or<br /><br />
+					<input type="text" class="url_upload" placeholder="URL to photo" />
+					&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
+					&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<!-- Upload files script -->
+<script>
+var urlUploadCount = 1;
+
+function addURLUpload() {
+	++urlUploadCount;
+	
+	var url_upload = document.createElement("input");
+	url_upload.class = "url_upload";
+	url_upload.placeholder = "URL to photo";
+	
+	var list = document.getElementById("url_upload_list");
+	
+	list.appendChild(url_upload);
+	
+	document.getElementById("remove_url_upload").style.display = "inline-block";
+};
+
+function removeURLUpload() {
+	--urlUploadCount;
+	
+	var list = document.getElementById("url_upload_list");
+	
+	list.removeChild(list.lastChild);
+	
+	if(urlUploadCount === 1)
+		document.getElementById("remove_url_upload").style.display = "none";
+};
+</script>
 		<!---//End-header---->
