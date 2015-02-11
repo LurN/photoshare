@@ -18,6 +18,8 @@
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
+		<!-- File upload script -->
+		<script src="js/fileUpload.js"></script>
         <!----start-dropdown--->
          <script type="text/javascript">
 			var $ = jQuery.noConflict();
@@ -98,9 +100,11 @@
 			<table id="file_upload_table">
 				<tr>Create new album</tr>
 				<tr>
-					<td style="vertical-align: top;">
-						<input id="album_name" type="text" placeholder="Album name" /><br /><br /><br />
-						<input type="submit" id="submit_album" value="Make album" />
+					<td style="vertical-align: top;"><br />
+						<h2>Settings</h2>
+						<input id="album_name" type="text" placeholder="Album name" /><br /><br />
+						<input id="is_private" type="checkbox" /><label for="is_private">Private</label><br /><br />
+						<input type="submit" hid="submit_album" value="Make album" />
 					</td>
 					<td id="url_upload_list">
 						<label for="image_upload">Select your photos</label>
@@ -115,55 +119,4 @@
 		</form>
 	</div>
 </div>
-
-<!-- Upload files script -->
-<script>
-var urlUploadCount = 1;
-
-function addURLUpload() {
-	++urlUploadCount;
-	
-	var url_upload = document.createElement("input");
-	url_upload.class = "url_upload";
-	url_upload.placeholder = "URL to photo";
-	
-	var list = document.getElementById("url_upload_list");
-	
-	list.appendChild(url_upload);
-	
-	document.getElementById("remove_url_upload").style.display = "inline-block";
-};
-
-function removeURLUpload() {
-	--urlUploadCount;
-	
-	var list = document.getElementById("url_upload_list");
-	
-	list.removeChild(list.lastChild);
-	
-	if(urlUploadCount === 1) {
-		document.getElementById("remove_url_upload").style.display = "none";
-		
-		return false;
-	} else {
-		return true;
-	}
-};
-
-function createNewAlbumModal() {
-	document.getElementById("album_name").value = "";
-	
-	// Remove all URL upload fields
-	while(urlUploadCount > 1)
-		removeURLUpload();
-	
-	document.getElementsByClassName("url_upload")[0].value = "";
-};
-
-function resetForm(id) {
-	var form = document.getElementById(id);
-	
-	form.value = null;
-};
-</script>
 		<!---//End-header---->
