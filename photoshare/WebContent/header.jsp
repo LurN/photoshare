@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>PhotoShare Home :: <%=session.getAttribute("name")%></title>
+		<title>PhotoShare :: <%=session.getAttribute("name")%></title>
 		<link href="css/style2.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
@@ -16,6 +16,8 @@
 		<!-- Global CSS for the page and tiles -->
   		<link rel="stylesheet" href="css/main.css">
   		<link rel="stylesheet" type="text/css" href="css/style.css" />
+  		<link rel="stylesheet" type="text/css" href="css/main.css" />
+  		<link rel="stylesheet" type="text/css" href="css/style2.css" />
         <link rel="stylesheet" type="text/css" href="css/login.css" />
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
   		<!-- //Global CSS for the page and tiles -->
