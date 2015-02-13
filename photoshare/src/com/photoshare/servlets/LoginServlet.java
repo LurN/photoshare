@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private AccountDao ldao;
-
+	
 	
 	public LoginServlet(){
 		ldao = new AccountDao();
@@ -38,6 +38,8 @@ public class LoginServlet extends HttpServlet {
 
 		if (session != null)
 			session.setAttribute("name", name);
+			session.setAttribute("id", ldao.getAccountId(name));
+			
 
 		// Valid username/password
 		if(ldao.validate(name, pass)) {

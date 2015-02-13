@@ -77,7 +77,7 @@
 				</div>       	  
 				<div class="top-searchbar">
 					<form>
-						<input type="text" /><input type="submit" value="album_search" />
+						<input type="text" /><input type="submit" value="" />
 					</form>
 				</div>
 				<div class="userinfo">
@@ -94,27 +94,20 @@
 <div id="openModal" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close">X</a>
+		<form enctype="multipart/form-data" action="fileUpload" method="post">
 		<table id="file_upload_table">
-			<tr>Create new album</tr>
-			<tr>
-				<td style="vertical-align: top;">
-					<input type="text" placeholder="Album name" /><br /><br /><br />
-					<input type="submit" id="submit_album" value="Make album" />
-				</td>
 				<td id="url_upload_list">
 					<label for="image_upload">Select your photos</label>
 					<input type="file" name="image_upload" id="image_upload_button" onchange="fileSelected();" multiple />
-					<br /><br />Or<br /><br />
-					<input type="text" class="url_upload" placeholder="URL to photo" />
-					&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
-					&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
+					<input type="submit" id="submit_album" value="upload" />
 				</td>
 			</tr>
 		</table>
+		</form>
 	</div>
 </div>
 
-<!-- Upload files script -->
+<!-- Upload files script 
 <script>
 var urlUploadCount = 1;
 
@@ -142,5 +135,29 @@ function removeURLUpload() {
 	if(urlUploadCount === 1)
 		document.getElementById("remove_url_upload").style.display = "none";
 };
+
+ function uploadToServer(formData) {
+
+    //Uncomment when you server ready
+
+    xhr = new XMLHttpRequest();
+    xhr.open("post", "http://localhost:8080/photoshare/fileUpload", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            alert(xhr.responseText);
+        }
+    };
+    xhr.send(formData);
+
+}
+ 
+ function uploadImage() {
+
+     var data = new FormData();
+     data.append("file", this.image_upload);
+     this.uploadToServer(data);
+
+ }
 </script>
+-->
 		<!---//End-header---->
