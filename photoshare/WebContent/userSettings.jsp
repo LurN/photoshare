@@ -2,19 +2,24 @@
 <!---start-content---->
 
 <div class="container" >
+<div class="content">
+			<div class="wrap">
+			 <div id="main" role="main">
             <!-- Codrops top bar -->
             <div class="codrops-top">
             </div><!--/ Codrops top bar -->
-            <header>
-                <h1>UserSettings</h1>
-            </header>
             <section>
-            	<a class="hiddenanchor" id="topasswordreset"></a>
-                <a class="hiddenanchor" id="tousersetting"></a>				
+            	<div class="menu_box_list">
+									<ul>
+										<li><a href="home.jsp"><span>Account Information</span></a></li>
+										<li><a href="#ChangePasswordl"><span>Change Password</span></a></li>
+									</ul>
+									<div class="clear"> </div>
+								</div>
                 <div id="container_demo" >
                     <div id="wrapper">
                         <div id="userSetting" class="animate form">
-                            <form  action="UserSettingServlet" autocomplete="on" method="post"> 
+                            <form  action="UserSettingServlet" autocomplete="on" method="post">
                                 <h1>Account Information</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Username </label>
@@ -39,34 +44,35 @@
                                 <p class="Update button"> 
                                     <input type="submit" value="Update" /> 
 								</p>
-								<p class="Update button"><a href="#topassword" class="to_password">Change Password</a></p>
                             </form>
                         </div>
 						<div id="userPasswordReset" class="animate form">
                             <form  action="UserSettingServlet" autocomplete="on" method="post"> 
-                                <h1>Account Information</h1> 
+                                <h1>Change Password</h1> 
                                 <p> 
                                     <label for="oldpassword" class="oldpassword" data-icon="p" > Old Password </label>
                                     <input id="oldpassword" name="username" required="required" type="password"/>
                                 </p>
                                 <p> 
-                                    <label for="useremail" class="uemail" data-icon="e" > New Password </label>
-                                    <input id="useremail" name="useremail" required="required" type="text" value="<%=session.getAttribute("email")%>"/>
+                                    <label for="newpassword" class="newpassword" data-icon="p" > New Password </label>
+                                    <input id="newpassword" name="newpassword" required="required" type="password"/>
                                 </p>
                                 <p> 
-                                    <label for="firstname" class="firstname" data-icon="u"> First Name </label>
-                                    <input id="firstname" name="firstname" required="required" type="text" value="<%=session.getAttribute("firstName")%>" /> 
+                                    <label for="confnewpassword" class="confnewpassword" data-icon="p"> Confirm New Password </label>
+                                    <input id="confnewpassword" name="confnewpassword" required="required" type="password"/> 
                                 </p>
                                 <p class="Change Password button"> 
-                                    <input type="submit" value="ChangePassword" /> 
+                                    <input type="submit" value="Change Password" /> 
 								</p>
-								<a href="#tousersetting" class="to_usersetting">Join us</a>
                             </form>
                         </div>
 						
                     </div>
                 </div>  
             </section>
+        </div>
+        </div>
+        </div>
         </div>
 <!---//End-content---->
 <%@ include file="footer.jsp"%>

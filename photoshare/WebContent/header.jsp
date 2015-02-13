@@ -15,6 +15,8 @@
 		<!----//webfonts---->
 		<!-- Global CSS for the page and tiles -->
   		<link rel="stylesheet" href="css/main.css">
+  		<link rel="stylesheet" href="css/style.css">
+  		<link rel="stylesheet" href="css/login.css">
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
@@ -63,7 +65,7 @@
 									<ul>
 										<li><a href="home.jsp"><span>home</span></a></li>
 										<li><a href="#openModal"><span>create album</span></a></li>
-										<li><a href="#"><span>Works</span></a></li>
+										<li><a href="userSettings.jsp"><span>User Settings</span></a></li>
 										<li><a href="#"><span>Clients</span></a></li>
 										<li><a href="#"><span>Blog</span></a></li>
 										<li><a href="contact.html"><span>Contact</span></a></li>
