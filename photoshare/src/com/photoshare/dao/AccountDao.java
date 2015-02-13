@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 import com.photoshare.utilities.DatabaseUtils;
 
@@ -79,4 +81,34 @@ public class AccountDao {
 
 		return status;
 	}//createAccount end
-}
+
+	public int getAccountId(String name){
+		int id = 0;
+		PreparedStatement getId = null;
+		ResultSet rsId = null;
+		
+		try {
+			getId = conn.prepareStatement("select idaccount from account where username=?");
+			getId.setString(1, name);
+			
+			rsId = getId.executeQuery();
+			System.out.println(rsId.first());
+			id = rsId.getInt(1);
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return id;
+		
+	}
+
+	
+}	
+		
+	

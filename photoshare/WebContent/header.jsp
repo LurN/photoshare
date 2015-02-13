@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>PhotoShare :: <%=session.getAttribute("name")%></title>
+		<title>PhotoShare Home :: <%=session.getAttribute("name")%></title>
 		<link href="css/style2.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
@@ -15,11 +15,6 @@
 		<!----//webfonts---->
 		<!-- Global CSS for the page and tiles -->
   		<link rel="stylesheet" href="css/main.css">
-  		<link rel="stylesheet" type="text/css" href="css/style.css" />
-  		<link rel="stylesheet" type="text/css" href="css/main.css" />
-  		<link rel="stylesheet" type="text/css" href="css/style2.css" />
-        <link rel="stylesheet" type="text/css" href="css/login.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
@@ -82,7 +77,7 @@
 				</div>       	  
 				<div class="top-searchbar">
 					<form>
-						<input type="text" placeholder="Search albums" /><input type="submit" value="album_search" />
+						<input type="text" /><input type="submit" value="" />
 					</form>
 				</div>
 				<div class="userinfo">
@@ -98,30 +93,21 @@
 <!-- Modal upload photos box -->
 <div id="openModal" class="modalDialog">
 	<div>
-		<a href="#close" title="Close" class="close" onclick="resetForm('image_upload_button');createNewAlbumModal();">X</a>
-		<form id="upload_form">
-			<table id="file_upload_table">
-				<tr>Create new album</tr>
-				<tr>
-					<td style="vertical-align: top;">
-						<input id="album_name" type="text" placeholder="Album name" /><br /><br /><br />
-						<input type="submit" id="submit_album" value="Make album" />
-					</td>
-					<td id="url_upload_list">
-						<label for="image_upload">Select your photos</label>
-						<input type="file" name="image_upload" id="image_upload_button" multiple />
-						<br /><br />Or<br /><br />
-						<input type="text" class="url_upload" placeholder="URL to photo" />
-						&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
-						&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
-					</td>
-				</tr>
-			</table>
+		<a href="#close" title="Close" class="close">X</a>
+		<form enctype="multipart/form-data" action="fileUpload" method="post">
+		<table id="file_upload_table">
+				<td id="url_upload_list">
+					<label for="image_upload">Select your photos</label>
+					<input type="file" name="image_upload" id="image_upload_button" onchange="fileSelected();" multiple />
+					<input type="submit" id="submit_album" value="upload" />
+				</td>
+			</tr>
+		</table>
 		</form>
 	</div>
 </div>
 
-<!-- Upload files script -->
+<!-- Upload files script 
 <script>
 var urlUploadCount = 1;
 
@@ -146,105 +132,32 @@ function removeURLUpload() {
 	
 	list.removeChild(list.lastChild);
 	
-	if(urlUploadCount === 1) {
+	if(urlUploadCount === 1)
 		document.getElementById("remove_url_upload").style.display = "none";
-		
-		return false;
-	} else {
-		return true;
-	}
 };
 
-function createNewAlbumModal() {
-	document.getElementById("album_name").value = "";
-	
-	// Remove all URL upload fields
-	while(urlUploadCount > 1)
-		removeURLUpload();
-	
-	document.getElementsByClassName("url_upload")[0].value = "";
-};
+ function uploadToServer(formData) {
 
-function resetForm(id) {
-	var form = document.getElementById(id);
-	
-	form.value = null;
-};
+    //Uncomment when you server ready
+
+    xhr = new XMLHttpRequest();
+    xhr.open("post", "http://localhost:8080/photoshare/fileUpload", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            alert(xhr.responseText);
+        }
+    };
+    xhr.send(formData);
+
+}
+ 
+ function uploadImage() {
+
+     var data = new FormData();
+     data.append("file", this.image_upload);
+     this.uploadToServer(data);
+
+ }
 </script>
-<!-- Modal upload photos box -->
-<div id="openModal" class="modalDialog">
-	<div>
-		<a href="#close" title="Close" class="close" onclick="resetForm('image_upload_button');createNewAlbumModal();">X</a>
-		<form id="upload_form">
-			<table id="file_upload_table">
-				<tr>Create new album</tr>
-				<tr>
-					<td style="vertical-align: top;">
-						<input id="album_name" type="text" placeholder="Album name" /><br /><br /><br />
-						<input type="submit" id="submit_album" value="Make album" />
-					</td>
-					<td id="url_upload_list">
-						<label for="image_upload">Select your photos</label>
-						<input type="file" name="image_upload" id="image_upload_button" multiple />
-						<br /><br />Or<br /><br />
-						<input type="text" class="url_upload" placeholder="URL to photo" />
-						&nbsp&nbsp<button id="add_url_upload" onclick="addURLUpload();">+</button>
-						&nbsp&nbsp<button id="remove_url_upload" style="display:none;" onclick="removeURLUpload();">-</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
-</div>
-
-<!-- Upload files script -->
-<script>
-var urlUploadCount = 1;
-
-function addURLUpload() {
-	++urlUploadCount;
-	
-	var url_upload = document.createElement("input");
-	url_upload.class = "url_upload";
-	url_upload.placeholder = "URL to photo";
-	
-	var list = document.getElementById("url_upload_list");
-	
-	list.appendChild(url_upload);
-	
-	document.getElementById("remove_url_upload").style.display = "inline-block";
-};
-
-function removeURLUpload() {
-	--urlUploadCount;
-	
-	var list = document.getElementById("url_upload_list");
-	
-	list.removeChild(list.lastChild);
-	
-	if(urlUploadCount === 1) {
-		document.getElementById("remove_url_upload").style.display = "none";
-		
-		return false;
-	} else {
-		return true;
-	}
-};
-
-function createNewAlbumModal() {
-	document.getElementById("album_name").value = "";
-	
-	// Remove all URL upload fields
-	while(urlUploadCount > 1)
-		removeURLUpload();
-	
-	document.getElementsByClassName("url_upload")[0].value = "";
-};
-
-function resetForm(id) {
-	var form = document.getElementById(id);
-	
-	form.value = null;
-};
-</script>
+-->
 		<!---//End-header---->
