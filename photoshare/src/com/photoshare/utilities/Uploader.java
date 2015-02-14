@@ -79,7 +79,7 @@ public class Uploader extends HttpServlet {
             }
 
             InputStream is = request.getPart(name).getInputStream();
-            File uploadDir = new File("C:\\Users\\Andrew\\Desktop\\PhotoSharePhotos");
+            File uploadDir = new File("C:\\Users\\Andrew\\git\\photoshare\\photoshare\\WebContent\\Photos");
             File file = File.createTempFile("img", ".PNG", uploadDir);
            
 
@@ -97,7 +97,7 @@ public class Uploader extends HttpServlet {
     		//ResultSet rs = null;
     		
     		try {
-    			pst = conn.prepareStatement("INSERT into `form`.`photos` (`idphotos`, `location`) VALUES (?,?)");
+    			pst = conn.prepareStatement("INSERT into `form`.`photos` (`userID`, `location`) VALUES (?,?)");
     			pst.setString(1, request.getSession().getAttribute("id").toString());
     			pst.setString(2, file.getAbsolutePath());
     			
