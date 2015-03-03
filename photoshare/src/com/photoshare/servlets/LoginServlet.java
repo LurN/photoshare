@@ -36,10 +36,11 @@ public class LoginServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 
-		if (session != null)
+		if (session != null) {
 			session.setAttribute("name", name);
 			session.setAttribute("id", ldao.getAccountId(name));
-			
+		}
+		
 
 		// Valid username/password
 		if(ldao.validate(name, pass)) {
