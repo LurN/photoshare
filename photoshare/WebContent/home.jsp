@@ -13,7 +13,8 @@
 			<ul id="tiles">
 				<%
 					for (String path : listOfPics) {
-						out.println("<li><img src="+path+" width=400px height=400px /></li>");
+						System.out.println(path);
+						out.println("<li><img src=http://localhost:8080/photoshare"+path.substring(52)+" width=100% height=auto /></li>");
 					}
 				%>
 				
