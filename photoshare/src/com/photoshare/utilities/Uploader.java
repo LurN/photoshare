@@ -90,8 +90,12 @@ public class Uploader extends HttpServlet {
                 fos.write(data);
             }
 
+            
+            String path = file.getAbsolutePath();
             fos.close();
+            
             out.println("File uploaded.");
+            System.out.println("Hello ANDREW");
             
             PreparedStatement pst = null;
     		//ResultSet rs = null;
@@ -99,7 +103,7 @@ public class Uploader extends HttpServlet {
     		try {
     			pst = conn.prepareStatement("INSERT into `form`.`photos` (`userID`, `location`) VALUES (?,?)");
     			pst.setString(1, request.getSession().getAttribute("id").toString());
-    			pst.setString(2, file.getAbsolutePath());
+    			pst.setString(2, path);
     			
     			
     			

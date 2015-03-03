@@ -32,7 +32,7 @@
 		      /**
 		       * When scrolled all the way to the bottom, add more tiles
 		       */
-		      function onScroll() {
+		     /** function onScroll() {
 		        // Check if we're within 100 pixels of the bottom edge of the broser window.
 		        var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
 		            closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
@@ -45,7 +45,7 @@
 		
 		          applyLayout();
 		        }
-		      };
+		      };*/
 		
 		      // Call the layout function for the first time
 		      applyLayout();
