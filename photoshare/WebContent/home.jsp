@@ -1,6 +1,21 @@
 <%@ include file="header.jsp"%>
+
+<script src="./js/modifyPhoto.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./css/modifyPhoto.css">
+
 <!---start-content---->
 <div class="content">
+			
+	<div id="contextMenu">
+		<form action="#openModal">
+			<input class="contextMenuItem" type="button" value="Add photo..."/><br />
+		</form>
+		<form action="#deleteModal">
+			<input class="contextMenuItem" type="button" value="Delete"/>
+		</form>
+	</div>
+			
 	<div class="wrap">
 		<div id="main" role="main">
 			<%@ page import="com.photoshare.dao.AccountDao, java.util.ArrayList"%>
