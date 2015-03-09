@@ -14,7 +14,7 @@
 				<%
 					for (String path : listOfPics) {
 						System.out.println(path);
-						out.println("<li><img src=http://localhost:8080/photoshare"+path.substring(52)+" width=100% height=auto /></li>");
+						out.println("<li><img src=../.."+path.substring(54)+" width=100% height=auto /></li>");
 					}
 				%>
 				

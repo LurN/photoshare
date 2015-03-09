@@ -79,7 +79,7 @@ public class Uploader extends HttpServlet {
             }
 
             InputStream is = request.getPart(name).getInputStream();
-            File uploadDir = new File("C:\\Users\\Andrew\\git\\photoshare\\photoshare\\WebContent\\Photos");
+            File uploadDir = new File("c:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\Photos\\");
             File file = File.createTempFile("img", ".PNG", uploadDir);
            
 
