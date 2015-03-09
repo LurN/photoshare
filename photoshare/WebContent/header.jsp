@@ -17,6 +17,7 @@
   		<link rel="stylesheet" href="css/main.css">
   		<link rel="stylesheet" href="css/style.css">
   		<link rel="stylesheet" href="css/login.css">
+  		<link rel="stylesheet" type="text/css" href="css/animate-custome.css"/>
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>

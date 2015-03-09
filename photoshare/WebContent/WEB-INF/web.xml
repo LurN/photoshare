@@ -16,7 +16,14 @@
     <servlet-name>create</servlet-name>
     <url-pattern>/createAccountServlet</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+  	<servlet-name>settings</servlet-name>
+  	<servlet-class>com.photoshare.servlets.UpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>settings</servlet-name>
+  	<url-pattern>/userSettings</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>upload</servlet-name>
     <servlet-class>com.photoshare.utilities.Uploader</servlet-class>

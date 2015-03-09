@@ -9,21 +9,21 @@
             <div class="codrops-top">
             </div><!--/ Codrops top bar -->
             <section>
-            	<div class="menu_box_list">
+            	<!--  <div class="menu_box_list">
 									<ul>
-										<li><a href="home.jsp"><span>Account Information</span></a></li>
-										<li><a href="#ChangePasswordl"><span>Change Password</span></a></li>
+										<li><a href="#userSetting"><span>Account Information</span></a></li>
+										<li><a href="#changePassword"><span>Change Password</span></a></li>
 									</ul>
 									<div class="clear"> </div>
-								</div>
+								</div>-->
                 <div id="container_demo" >
                     <div id="wrapper">
                         <div id="userSetting" class="animate form">
-                            <form  action="UserSettingServlet" autocomplete="on" method="post">
+                            <form  action="userSettings" autocomplete="on" method="post">
                                 <h1>Account Information</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Username </label>
-                                    <input id="username" name="username" required="required" type="text" value="<%=session.getAttribute("name")%>"/>
+                                    <input id="username" name="username" required="required" type="text" value="<%=session.getAttribute("name")%>" readonly/>
                                 </p>
                                 <p> 
                                     <label for="useremail" class="uemail" data-icon="e" > Email Address </label>
@@ -46,8 +46,8 @@
 								</p>
                             </form>
                         </div>
-						<div id="userPasswordReset" class="animate form">
-                            <form  action="UserSettingServlet" autocomplete="on" method="post"> 
+						<div id="userPassword" class="animate form">
+                            <form  action="userSettings" autocomplete="on" method="post"> 
                                 <h1>Change Password</h1> 
                                 <p> 
                                     <label for="oldpassword" class="oldpassword" data-icon="p" > Old Password </label>

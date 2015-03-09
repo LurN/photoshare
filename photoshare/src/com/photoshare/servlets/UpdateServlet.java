@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,32 +30,48 @@ public class UpdateServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		java.util.Date birthDate = null;
+		java.sql.Date sqlDate = null;
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		String username = request.getParameter("username");
+		String userName = request.getParameter("username");
 		String email = request.getParameter("useremail");
 		String firstName = request.getParameter("firstname");
-		String lastPass = request.getParameter("lastname");
+		String lastName = request.getParameter("lastname");
 		String stringBirthDate = request.getParameter("birthdate");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		//surround below line with try catch block as below code throws checked exception
+//surround below line with try catch block as below code throws checked exception
 		try {
-			Date birthDate = sdf.parse(stringBirthDate);
+			birthDate = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(stringBirthDate);
+			sqlDate = new java.sql.Date(birthDate.getTime());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		HttpSession session = request.getSession(false);
-
-		if (session != null)
-			session.setAttribute("name", username);
-
-
-
+		
+		if(ldao.modifyAccount(userName, email, firstName, lastName, sqlDate)) {
+			response.sendRedirect("userSettings.jsp");
+		} else {
+			out.print("<p style=\"color:red\">Account not modify.</p>");
+			RequestDispatcher rd = request.getRequestDispatcher("userSettings.jsp");
+			rd.include(request, response);
+		}
+		
+		
+		if (session != null) 
+			session.setAttribute("name", userName);
+		session.setAttribute("email", ldao.getEmail(userName));
+		session.setAttribute("firstName", ldao.getFirstName(userName));
+		session.setAttribute("lastName", ldao.getLastName(userName));
+		try {
+			session.setAttribute("birthDate", ldao.getBirthDate(userName));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		out.close();
 	}
 }

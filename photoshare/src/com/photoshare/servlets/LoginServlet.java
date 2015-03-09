@@ -2,6 +2,7 @@ package com.photoshare.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,19 +31,18 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		String name = request.getParameter("username");
+		String userName = request.getParameter("username");
 		String pass = request.getParameter("password");
 		
 
 		HttpSession session = request.getSession(false);
 
 		if (session != null)
-			session.setAttribute("name", name);
-			session.setAttribute("id", ldao.getAccountId(name));
-			
+			session.setAttribute("name", userName);
+
 
 		// Valid username/password
-		if(ldao.validate(name, pass)) {
+		if(ldao.validate(userName, pass)) {
 			response.sendRedirect("home.jsp");
 			
 		} else {
@@ -51,6 +51,17 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}
+		session.setAttribute("email", ldao.getEmail(userName));
+		session.setAttribute("firstName", ldao.getFirstName(userName));
+		session.setAttribute("lastName", ldao.getLastName(userName));
+		try {
+			System.out.println(ldao.getBirthDate(userName));
+			session.setAttribute("birthDate", ldao.getBirthDate(userName));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 
 		out.close();
 	}
