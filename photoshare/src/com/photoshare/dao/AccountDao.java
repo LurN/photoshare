@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.lang.String;
 
 import com.photoshare.utilities.DatabaseUtils;
 
@@ -275,4 +277,34 @@ public class AccountDao {
 		return null;
 	}
 
-}
+	public ArrayList<String> getAccountPics(String name){
+		
+		ArrayList<String> listOfPics = new ArrayList<String>();
+		PreparedStatement getPics = null;
+		ResultSet rsPics = null;
+		
+		try {
+			getPics = conn.prepareStatement("SELECT location FROM `form`.`photos` WHERE `photos`.`userID` = ?");
+			getPics.setString(1, String.valueOf(getAccountId(name)));
+			
+			rsPics = getPics.executeQuery();
+			System.out.println(rsPics);
+			
+			while(rsPics.next())
+			{
+				listOfPics.add(rsPics.getString("location"));
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listOfPics;
+		
+		
+	}
+}	

@@ -99,6 +99,7 @@
 		<a href="#close" title="Close" class="close">X</a>
 		<form enctype="multipart/form-data" action="fileUpload" method="post">
 		<table id="file_upload_table">
+			<tr>
 				<td id="url_upload_list">
 					<label for="image_upload">Select your photos</label>
 					<input type="file" name="image_upload" id="image_upload_button" onchange="fileSelected();" multiple />
