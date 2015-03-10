@@ -45,6 +45,18 @@ public class LoginServlet extends HttpServlet {
 		// Valid username/password
 		if(ldao.validate(userName, pass)) {
 			response.sendRedirect("home.jsp");
+			if(session != null) {
+				session.setAttribute("username", userName);
+				session.setAttribute("email", ldao.getEmail(userName));
+				session.setAttribute("firstName", ldao.getFirstName(userName));
+				session.setAttribute("lastName", ldao.getLastName(userName));
+				try {
+					session.setAttribute("birthDate", ldao.getBirthDate(userName));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				}
 			
 		} else {
 			// Invalid username/password
@@ -52,17 +64,7 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}
-		if(session != null) {
-		session.setAttribute("email", ldao.getEmail(userName));
-		session.setAttribute("firstName", ldao.getFirstName(userName));
-		session.setAttribute("lastName", ldao.getLastName(userName));
-		try {
-			session.setAttribute("birthDate", ldao.getBirthDate(userName));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
+		
 			
 
 		out.close();

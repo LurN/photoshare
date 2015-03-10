@@ -1,6 +1,20 @@
 <%@ include file="header.jsp"%>
 <!---start-content---->
+        <script type="text/javascript">
+            function validate()
+            {
+                var a = document.getElementById("newpassword");
+                var b = document.getElementById("confnewpassword");
+                var valid = true;
+                if(!a.equals(b))
+                    {
+                        alert("New Passwords Don't Match!");
+                        valid = false;
+                    }
+                return valid;
+            };
 
+        </script>
 <div class="container" >
 <div class="content">
 			<div class="wrap">
@@ -47,11 +61,11 @@
                             </form>
                         </div>
 						<div id="userPassword" class="animate form">
-                            <form  action="userSettings" autocomplete="on" method="post"> 
+                            <form  action="userPassword" autocomplete="on" method="post" onsubmit="return validate();"> 
                                 <h1>Change Password</h1> 
                                 <p> 
                                     <label for="oldpassword" class="oldpassword" data-icon="p" > Old Password </label>
-                                    <input id="oldpassword" name="username" required="required" type="password"/>
+                                    <input id="oldpassword" name="oldpassword" required="required" type="password"/>
                                 </p>
                                 <p> 
                                     <label for="newpassword" class="newpassword" data-icon="p" > New Password </label>
