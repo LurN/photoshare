@@ -80,6 +80,35 @@ public class AccountDao {
 		return status;
 
 	}
+	
+	public boolean modifyPassword(String userName, String password) {
+		boolean status = false;
+
+		int rsModify = 0;
+		PreparedStatement pstModify = null;
+
+		try {
+
+			if (accountExists(userName)) {
+				pstModify = conn
+						.prepareStatement("UPDATE form.account SET password =? WHERE username = ?");
+				pstModify.setString(1, password);
+				pstModify.setString(2, userName);
+
+				rsModify = pstModify.executeUpdate();
+				if (rsModify != 1) {
+					status = false;
+				} else {
+					status = true;
+				}
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+		return status;
+
+	}
 
 	public boolean createAccount(String userName, String password, String email) {
 		boolean status = false;
@@ -268,6 +297,31 @@ public class AccountDao {
 				birthDate = rs.getDate(1);
 				if(birthDate != null)
 					return new SimpleDateFormat("yyyy-MM-dd").format(birthDate).toString();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public String getPassword(String userName) {
+		String password = null;
+		PreparedStatement getPassword = null;
+		ResultSet rs = null;
+
+		try {
+			getPassword = conn
+					.prepareStatement("select password from form.account where username=?");
+			getPassword.setString(1, userName);
+			
+
+			rs = getPassword.executeQuery();
+			// Set pointer of rs.
+			if(rs.first()) {
+				password = rs.getString(1);
+				return password;
 			}
 
 		} catch (SQLException e) {
