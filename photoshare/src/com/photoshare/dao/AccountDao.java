@@ -125,14 +125,13 @@ public class AccountDao {
 
 		try {
 			pstCheck = conn
-					.prepareStatement("select * from account where username=?");
+					.prepareStatement("select * from form.account where username=?");
 
 			pstCheck.setString(1, userName);
 
 			rsCheck = pstCheck.executeQuery();
-			if(rsCheck.first()) {
-				return rsCheck.next();
-			}
+			return rsCheck.next();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -267,7 +266,8 @@ public class AccountDao {
 			// Set pointer of rs.
 			if(rs.first()) {
 				birthDate = rs.getDate(1);
-				return new SimpleDateFormat("YYYY-MM-DD").format(birthDate).toString();
+				if(birthDate != null)
+					return new SimpleDateFormat("yyyy-MM-dd").format(birthDate).toString();
 			}
 
 		} catch (SQLException e) {
@@ -288,7 +288,6 @@ public class AccountDao {
 			getPics.setString(1, String.valueOf(getAccountId(name)));
 			
 			rsPics = getPics.executeQuery();
-			System.out.println(rsPics);
 			
 			while(rsPics.next())
 			{

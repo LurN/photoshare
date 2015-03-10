@@ -43,7 +43,7 @@ public class UpdateServlet extends HttpServlet {
 		
 //surround below line with try catch block as below code throws checked exception
 		try {
-			birthDate = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(stringBirthDate);
+			birthDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(stringBirthDate);
 			sqlDate = new java.sql.Date(birthDate.getTime());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -60,18 +60,16 @@ public class UpdateServlet extends HttpServlet {
 			rd.include(request, response);
 		}
 		
-		
-		if (session != null) 
-			session.setAttribute("name", userName);
+		session.setAttribute("name", userName);
 		session.setAttribute("email", ldao.getEmail(userName));
 		session.setAttribute("firstName", ldao.getFirstName(userName));
 		session.setAttribute("lastName", ldao.getLastName(userName));
 		try {
 			session.setAttribute("birthDate", ldao.getBirthDate(userName));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		out.close();
 	}
 }
