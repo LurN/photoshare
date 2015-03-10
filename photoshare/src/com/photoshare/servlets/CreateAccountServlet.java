@@ -40,7 +40,7 @@ public class CreateAccountServlet extends HttpServlet {
 
 		// Valid username/password
 		if(ldao.createAccount(name, pass, email)) {
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("userHome.jsp");
 		} else {
 			// Invalid username/password
 			out.print("<p style=\"color:red\">Account already exists.</p>");
