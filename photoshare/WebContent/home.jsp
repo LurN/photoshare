@@ -7,8 +7,7 @@
 			<%
 				AccountDao ldao = new AccountDao();
 			
-				ArrayList<String> listOfPics = ldao.getAccountPics(session
-						.getAttribute("name").toString());		
+				ArrayList<String> listOfPics = ldao.getAllPics();		
 			%>
 			<ul id="tiles">
 				<%

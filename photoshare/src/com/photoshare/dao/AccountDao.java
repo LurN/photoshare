@@ -139,6 +139,34 @@ public class AccountDao {
 		
 		
 	}
-}	
-		
 	
+
+	public ArrayList<String> getAllPics()
+	{
+		ArrayList<String> listOfPics = new ArrayList<String>();
+		PreparedStatement getPics = null;
+		ResultSet rsPics = null;
+		
+		try {
+			getPics = conn.prepareStatement("SELECT location FROM `form`.`photos`");
+			
+			rsPics = getPics.executeQuery();
+			System.out.println(rsPics);
+			
+			while(rsPics.next())
+			{
+				listOfPics.add(rsPics.getString("location"));
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listOfPics;
+	}
+		
+}
