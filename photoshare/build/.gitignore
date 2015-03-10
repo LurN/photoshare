@@ -1,3 +1,4 @@
 /com/
 /database.properties
 /uploadPath.config
+*.class
