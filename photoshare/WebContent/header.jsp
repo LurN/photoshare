@@ -69,7 +69,7 @@
 										<li><a href="userSettings.jsp"><span>User Settings</span></a></li>
 										<li><a href="#"><span>Clients</span></a></li>
 										<li><a href="#"><span>Blog</span></a></li>
-										<li><a href="contact.html"><span>Contact</span></a></li>
+										<li><a href="contact.jsp"><span>Contact</span></a></li>
 									</ul>
 									<div class="clear"> </div>
 								</div>
