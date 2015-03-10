@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 
 		// Valid username/password
 		if(ldao.validate(name, pass)) {
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("userhome.jsp");
 			
 		} else {
 			// Invalid username/password

@@ -118,7 +118,7 @@ public class Uploader extends HttpServlet {
             
         }
         
-        response.sendRedirect("home.jsp");
+        response.sendRedirect("userHome.jsp");
     }
 	
 	/*
