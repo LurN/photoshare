@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
     pageEncoding="ISO-8859-1"%> 
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="com.internationalization.resources.text" />
 <html>
 	<head>
 		<title>PhotoShare Home :: <%=session.getAttribute("name")%></title>
@@ -50,7 +54,6 @@
 		<!---start-wrap---->
 			<!---start-header---->
 			<div class="header">
-			
 				<div class="wrap">
 				<div class="logo">
 					<a href="home.jsp"><img src="images/logo.png" title="pinbal" /></a>
@@ -64,12 +67,12 @@
 						 	<div class="form_content">
 								<div class="menu_box_list">
 									<ul>
-										<li><a href="home.jsp"><span>home</span></a></li>
-										<li><a href="#openModal"><span>create album</span></a></li>
-										<li><a href="userSettings.jsp"><span>User Settings</span></a></li>
-										<li><a href="#"><span>Clients</span></a></li>
-										<li><a href="#"><span>Blog</span></a></li>
-										<li><a href="contact.jsp"><span>Contact</span></a></li>
+										<li><a href="home.jsp"><span><fmt:message key="header.menu.home" /></span></a></li>
+										<li><a href="#openModal"><span><fmt:message key="header.menu.create.album" /></span></a></li>
+										<li><a href="userSettings.jsp"><span><fmt:message key="header.menu.user.settings" /></span></a></li>
+										<li><a href="#"><span><fmt:message key="header.menu.clients" /></span></a></li>
+										<li><a href="#"><span><fmt:message key="header.menu.blog" /></span></a></li>
+										<li><a href="contact.jsp"><span><fmt:message key="header.menu.contact" /></span></a></li>
 									</ul>
 									<div class="clear"> </div>
 								</div>
@@ -90,6 +93,12 @@
 						</ul>
 					</div>
 				</div>
+				<form>
+            <select id="language" name="language" onchange="submit()">
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                <option value="fr" ${language == 'fr' ? 'selected' : ''}>French</option>
+            </select>
+        </form>
 				<div class="clear"> </div>
 			</div>
 		</div>

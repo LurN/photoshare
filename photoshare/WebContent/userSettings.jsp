@@ -34,49 +34,49 @@
                     <div id="wrapper">
                         <div id="userSetting" class="animate form">
                             <form  action="userSettings" autocomplete="on" method="post">
-                                <h1>Account Information</h1> 
+                                <h1><fmt:message key="user.settings.account.information" /></h1> 
                                 <p> 
-                                    <label for="username" class="uname" data-icon="u" > Username </label>
+                                    <label for="username" class="uname" data-icon="u" ><fmt:message key="user.settings.username" /></label>
                                     <input id="username" name="username" required="required" type="text" value="<%=session.getAttribute("name")%>" readonly/>
                                 </p>
                                 <p> 
-                                    <label for="useremail" class="uemail" data-icon="e" > Email Address </label>
+                                    <label for="useremail" class="uemail" data-icon="e" ><fmt:message key="user.settings.email" /></label>
                                     <input id="useremail" name="useremail" required="required" type="text" value="<%=session.getAttribute("email")%>"/>
                                 </p>
                                 <p> 
-                                    <label for="firstname" class="firstname" data-icon="u"> First Name </label>
+                                    <label for="firstname" class="firstname" data-icon="u"><fmt:message key="user.settings.first.name" /></label>
                                     <input id="firstname" name="firstname" required="required" type="text" value="<%=session.getAttribute("firstName")%>" /> 
                                 </p>
                                 <p> 
-                                    <label for="lastname" class="lastname" data-icon="u" > Last Name </label>
+                                    <label for="lastname" class="lastname" data-icon="u" ><fmt:message key="user.settings.last.name" /></label>
                                     <input id="lastname" name="lastname" required="required" type="text" value="<%=session.getAttribute("lastName")%>"/>
                                 </p>
                                 <p> 
-                                    <label for="birthdate" class="birthdate" data-icon="u" > Date of Birth </label>
+                                    <label for="birthdate" class="birthdate" data-icon="u" ><fmt:message key="user.settings.birthdate" /></label>
                                     <input id="birthdate" name="birthdate" required="required" type="date" value="<%=session.getAttribute("birthDate")%>"/>
                                 </p>
                                 <p class="Update button"> 
-                                    <input type="submit" value="Update" /> 
+                                    <input type="submit" value="<fmt:message key="user.settings.button.update" />" /> 
 								</p>
                             </form>
                         </div>
 						<div id="userPassword" class="animate form">
                             <form  action="userPassword" autocomplete="on" method="post" onsubmit="return validate();"> 
-                                <h1>Change Password</h1> 
+                                <h1><fmt:message key="user.settings.change.password" /></h1> 
                                 <p> 
-                                    <label for="oldpassword" class="oldpassword" data-icon="p" > Old Password </label>
+                                    <label for="oldpassword" class="oldpassword" data-icon="p" ><fmt:message key="user.settings.oldpass" /></label>
                                     <input id="oldpassword" name="oldpassword" required="required" type="password"/>
                                 </p>
                                 <p> 
-                                    <label for="newpassword" class="newpassword" data-icon="p" > New Password </label>
+                                    <label for="newpassword" class="newpassword" data-icon="p" ><fmt:message key="user.settings.newpass" /></label>
                                     <input id="newpassword" name="newpassword" required="required" type="password"/>
                                 </p>
                                 <p> 
-                                    <label for="confnewpassword" class="confnewpassword" data-icon="p"> Confirm New Password </label>
+                                    <label for="confnewpassword" class="confnewpassword" data-icon="p"><fmt:message key="user.settings.confirm.newpass" /></label>
                                     <input id="confnewpassword" name="confnewpassword" required="required" type="password"/> 
                                 </p>
                                 <p class="Change Password button"> 
-                                    <input type="submit" value="Change Password" /> 
+                                    <input type="submit" value="<fmt:message key="user.settings.execute" />" /> 
 								</p>
                             </form>
                         </div>
