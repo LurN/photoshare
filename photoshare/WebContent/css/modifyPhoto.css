@@ -1,0 +1,32 @@
+@CHARSET "ISO-8859-1";
+
+#contextMenu {
+	z-index: 99999;
+	position: absolute;
+	background-color: #CCC;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 3px 3px 2px #888;
+	cursor: context-menu;
+	display: none;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.contextMenuItem {
+	border: 0;
+	background: none;
+	outline: 0;
+	width: 100%;
+	text-align: left;
+	font-size: 18px;
+}
+
+.contextMenuItem:hover {
+	background-color: #FF00FF;
+}

@@ -14,6 +14,8 @@
 		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		
+		<script src="./js/modifyPhoto.js"></script>
+		
 		<!----webfonts---->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 		<!----//webfonts---->
@@ -21,7 +23,7 @@
   		<link rel="stylesheet" href="css/main.css">
   		<link rel="stylesheet" href="css/style.css">
   		<link rel="stylesheet" href="css/login.css">
-  		<link rel="stylesheet" type="text/css" href="css/animate-custome.css"/>
+  		<link rel="stylesheet" type="text/css" href="css/animate-custom.css"/>
   		<!-- //Global CSS for the page and tiles -->
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
@@ -51,6 +53,17 @@
 		<!---//End-click-drop-down-menu----->
 	</head>
 	<body>
+			
+	<!-- Context menu -->
+	<div id="contextMenu">
+		<a href="#openModal" id="openModalLink">
+			<input class="contextMenuItem" type="button" value="Add photo..."/><br />
+		</a>
+		<a href="#deleteModal" id="deleteModalLink">
+			<input class="contextMenuItem" type="button" value="Delete"/>
+		</a>
+	</div>
+	
 		<!---start-wrap---->
 			<!---start-header---->
 			<div class="header">
@@ -119,6 +132,20 @@
 		</form>
 	</div>
 </div>
+
+<!-- Modal delete photos box -->
+<!--
+<div id="deleteModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+			<span>
+				Are you sure?<br />
+			</span>
+			<input type="submit" value="Delete" />
+			<input type="button" name="Cancel" />
+	</div>
+</div>
+-->
 
 <!-- Upload files script 
 <script>

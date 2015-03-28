@@ -338,7 +338,7 @@ public class AccountDao {
 		ResultSet rsPics = null;
 		
 		try {
-			getPics = conn.prepareStatement("SELECT location FROM `form`.`photos` WHERE `photos`.`userID` = ?");
+			getPics = conn.prepareStatement("SELECT location FROM `form`.`photos` WHERE `photos`.`userID` = ?"); // AND `photos`.`isDeleted` <> true
 			getPics.setString(1, String.valueOf(getAccountId(name)));
 			
 			rsPics = getPics.executeQuery();
@@ -359,5 +359,23 @@ public class AccountDao {
 		return listOfPics;
 		
 		
+	}
+	
+	/* Delete an existing photo. Sets isDeleted flag, image and database entry remain. */
+	public void deletePhoto(String filename, String username) {
+		/* Invalid parameters */
+		if(filename == null || username == null)
+			return;
+		
+		PreparedStatement deleteQuery = null;
+		
+		try {
+			deleteQuery = conn.prepareStatement("UPDATE `form`.`photos` SET `isDeleted`=true WHERE `photos`.`userID` = ?");
+			deleteQuery.setString(1,  String.valueOf(getAccountId(username)));
+			
+			deleteQuery.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }	
