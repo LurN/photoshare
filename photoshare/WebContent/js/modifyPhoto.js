@@ -20,6 +20,8 @@ window.onload = function() {
 			contextMenu.opacity = 0;
 		}
 		
+		/* TODO: Enable / disable delete item if user is over photo */
+			
 		contextMenu.fadeIn(FADE_FAST);
 		
 		contextMenu.css({left: e.pageX - 2, top: e.pageY - 2});
