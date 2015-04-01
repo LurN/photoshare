@@ -27,6 +27,8 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
+import com.sun.jndi.toolkit.url.Uri;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -79,7 +81,9 @@ public class Uploader extends HttpServlet {
             }
 
             InputStream is = request.getPart(name).getInputStream();
-            File uploadDir = new File("c:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\Photos\\");
+            
+            File uploadDir = new File("C:\\Users\\Andrew\\git\\photoshare\\photoshare\\WebContent\\Photos\\");
+            System.out.println("UploadDir:"+uploadDir);
             File file = File.createTempFile("img", ".PNG", uploadDir);
            
 
@@ -94,7 +98,7 @@ public class Uploader extends HttpServlet {
             String path = file.getAbsolutePath();
             fos.close();
             
-            out.println("File uploaded.");
+            System.out.println("File uploaded.");
             System.out.println("Hello ANDREW");
             
             PreparedStatement pst = null;
@@ -111,7 +115,8 @@ public class Uploader extends HttpServlet {
     			
 
     		} catch (Exception e) {
-    			System.out.println(e);
+    			e.printStackTrace();
+    			System.out.println("Inside uploader doPost");
     		
     		}
     		

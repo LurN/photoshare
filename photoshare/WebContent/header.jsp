@@ -102,7 +102,7 @@
 				<div class="userinfo">
 					<div class="user">
 						<ul>
-							<li><a href="userSettings.jsp"><img src="images/user-pic.png" title="user-name" /><span><%=session.getAttribute("name")%></span></a></li>
+							<li><a href="userHome.jsp"><img src="images/user-pic.png" title="user-name" /><span><%=session.getAttribute("name")%></span></a></li>
 						</ul>
 					</div>
 				</div>

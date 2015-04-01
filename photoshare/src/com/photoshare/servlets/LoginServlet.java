@@ -50,12 +50,14 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("email", ldao.getEmail(userName));
 				session.setAttribute("firstName", ldao.getFirstName(userName));
 				session.setAttribute("lastName", ldao.getLastName(userName));
+				session.setAttribute("id", ldao.getAccountId(userName));
 				try {
 					session.setAttribute("birthDate", ldao.getBirthDate(userName));
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				}
 			
 		} else {

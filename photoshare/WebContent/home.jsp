@@ -11,8 +11,7 @@
 			<%
 				AccountDao ldao = new AccountDao();
 			
-				ArrayList<String> listOfPics = ldao.getAccountPics(session
-						.getAttribute("name").toString());
+				ArrayList<String> listOfPics = ldao.getAllPics();
 			%>
 			<ul id="tiles">
 				<%
@@ -20,7 +19,7 @@
 					int i = 0;
 					for (String path : listOfPics) {
 						System.out.println(path);
-						out.println("<li class=\"photo\" id=\"photo" + ++i + "\"><img src=../.."+path.substring(54)+" width=100% height=auto /></li>");
+						out.println("<li class=\"photo\" id=\"photo" + ++i + "\"><img src=http://localhost:8080/photoshare"+path.substring(52)+" width=100% height=auto /></li>");
 					}
 				%>
 				
