@@ -2,6 +2,28 @@ window.onload = function() {
 	/* Constants */
 	var FADE_FAST = 100;
 	
+	/* Strings */
+	var STRINGS = {
+			"en": {
+				add: "Add photo...",
+				del: "Delete"
+			},
+			"fr": {
+				add: "Ajoutez une photo...",
+				del: "Effacer photo"
+			}
+	};
+	
+	/* Change strings based on language */
+	var setLanguage = function() {
+		/* Language */
+		var language = navigator.userLanguage || navigator.language;
+		language.indexOf("en") >= 0 ? language = "en" : language = "fr";
+		
+		$("#addPhotoButton").val(STRINGS[language].add);
+		$("#deletePhotoButton").val(STRINGS[language].del);
+	};
+	
 	/* DOM elements */
 	var contextMenu = $("#contextMenu");
 	var deleteModalLink = $("#deleteModalLink");
@@ -68,4 +90,6 @@ window.onload = function() {
 	}
 	
 	deleteModalLink.onclick = deleteModalLinkOnClick;
+	
+	setLanguage();
 };
