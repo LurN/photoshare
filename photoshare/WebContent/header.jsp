@@ -133,6 +133,13 @@
 	</div>
 </div>
 
+<div id="photoModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<img id="photoModalPhoto" />
+	</div>
+</div>
+
 <!-- Modal delete photos box -->
 <!--
 <div id="deleteModal" class="modalDialog">

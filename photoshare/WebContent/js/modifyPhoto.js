@@ -1,6 +1,15 @@
 window.onload = function() {
 	/* Constants */
 	var FADE_FAST = 100;
+	var FADE_SLOW = 1000;
+	
+	/* DOM elements */
+	var contextMenu = $("#contextMenu");
+	var deleteModalLink = $("#deleteModalLink");
+	var deletePhotoButton = $("#deletePhotoButton");
+	var addPhotoButton = $("#addPhotoButton");
+	var photoModal = $("#photoModal");
+	var photoModalPhoto = $("#photoModalPhoto");
 	
 	/* Strings */
 	var STRINGS = {
@@ -14,22 +23,18 @@ window.onload = function() {
 			}
 	};
 	
+	/* Photo being hovered */
+	var hoveredPhoto;
+	
 	/* Change strings based on language */
 	var setLanguage = function() {
 		/* Language */
 		var language = navigator.userLanguage || navigator.language;
 		language.indexOf("en") >= 0 ? language = "en" : language = "fr";
 		
-		$("#addPhotoButton").val(STRINGS[language].add);
-		$("#deletePhotoButton").val(STRINGS[language].del);
+		addPhotoButton.val(STRINGS[language].add);
+		deletePhotoButton.val(STRINGS[language].del);
 	};
-	
-	/* DOM elements */
-	var contextMenu = $("#contextMenu");
-	var deleteModalLink = $("#deleteModalLink");
-	
-	/* Photo being hovered */
-	var hoveredPhoto;
 	
 	/* Context menu handler */
 	var mainContextMenu = function(e) {
@@ -38,15 +43,29 @@ window.onload = function() {
 		
 		e.preventDefault();
 		
+		mainContextMenu.selected = hoveredPhoto;
+		
 		if(contextMenu.is(":visible")) {
 			contextMenu.opacity = 0;
 		}
-		
-		/* TODO: Enable / disable delete item if user is over photo */
+
+		/* Enable delete button if hovering over an image */
+		deletePhotoButton.prop("disabled", hoveredPhoto === undefined);
 			
 		contextMenu.fadeIn(FADE_FAST);
 		
 		contextMenu.css({left: e.pageX - 2, top: e.pageY - 2});
+	};
+	
+	/* Delete button click handler */
+	var deletePhotoButtonOnClick = function(e) {
+		$(mainContextMenu.selected).fadeOut(FADE_SLOW, function() {
+			$(mainContextMenu.selected).remove();
+			
+			/* Remove photo from database */
+			mainContextMenu.selected = undefined;
+			hoveredPhoto = undefined;
+		});
 	};
 	
 	/* Context menu hover handler */
@@ -62,9 +81,8 @@ window.onload = function() {
 		if(contextMenu.is(":focus"))
 			return;
 		
-		if(contextMenu.is(":visible")) {
+		if(contextMenu.is(":visible"))
 			contextMenu.fadeOut(FADE_FAST);
-		}
 	};
 	
 	/* Mouseover handler */
@@ -74,7 +92,14 @@ window.onload = function() {
 	
 	/* Mouseout handler */
 	var onPhotoMouseOut = function(e) {
-		hoveredPhoto = null;
+		hoveredPhoto = undefined;
+	};
+	
+	/* Photo click handler */
+	var onPhotoClick = function(e) {
+		location.href = "#photoModal";
+
+		photoModalPhoto.prop("src", $(this).children(0).prop("src"));
 	};
 	
 	/* Attach action listeners */
@@ -87,9 +112,11 @@ window.onload = function() {
 	for(var i = 0; i < photoClass.length; ++i) {
 		photoClass[i].addEventListener("mouseover", onPhotoMouseOver);
 		photoClass[i].addEventListener("mouseout", onPhotoMouseOut);
+		photoClass[i].addEventListener("click", onPhotoClick);
 	}
 	
-	deleteModalLink.onclick = deleteModalLinkOnClick;
+	deletePhotoButton.on("click", deletePhotoButtonOnClick);
+	deleteModalLink.on("click", deleteModalLinkOnClick);
 	
 	setLanguage();
 };

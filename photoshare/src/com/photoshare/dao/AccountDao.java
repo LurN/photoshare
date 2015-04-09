@@ -399,7 +399,7 @@ public class AccountDao {
 		
 		try {
 			deleteQuery = conn.prepareStatement("UPDATE `form`.`photos` SET `isDeleted`=true WHERE `photos`.`userID` = ?");
-			deleteQuery.setString(1,  String.valueOf(getAccountId(username)));
+			deleteQuery.setString(1, String.valueOf(getAccountId(username)));
 			
 			deleteQuery.executeQuery();
 		} catch (SQLException e) {
