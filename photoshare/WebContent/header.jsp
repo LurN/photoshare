@@ -70,10 +70,10 @@
 	<!-- Context menu -->
 	<div id="contextMenu">
 		<a href="#openModal" id="openModalLink">
-			<input id="addPhotoButton" class="contextMenuItem" type="button" value="Add photo..."/><br />
+			<input class="contextMenuItem" type="button" value="Add photo..."/><br />
 		</a>
 		<a href="#deleteModal" id="deleteModalLink">
-			<input id="deletePhotoButton" class="contextMenuItem" type="button" value="Delete"/>
+			<input class="contextMenuItem" type="button" value="Delete"/>
 		</a>
 	</div>
 	

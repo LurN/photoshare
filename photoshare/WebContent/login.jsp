@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
@@ -45,11 +45,11 @@
                                 <h1><fmt:message key="login.title.login" /></h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > <fmt:message key="login.label.email" /> </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
+                                    <input id="username" name="username" required type="text" placeholder="myusername or mymail@mail.com"/>
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> <fmt:message key="login.label.password" /> </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                    <input id="password" name="password" required type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 <p class="keeplogin"> 
 									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
@@ -70,25 +70,19 @@
                                 <h1> <fmt:message key="login.title.signup" /> </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u"><fmt:message key="singup.label.username" /></label>
-                                    <input id="usernamesignup" name="usernamesignup" required="required" ty
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    pe="text" placeholder="mysuperusername690" />
+                                    <input id="usernamesignup" name="usernamesignup" required type="text" placeholder="mysuperusername690" />
                                 </p>
                                 <p> 
                                     <label for="emailsignup" class="youmail" data-icon="e" > <fmt:message key="singup.label.email" /></label>
-                                    <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+                                    <input id="emailsignup" name="emailsignup" required type="email" placeholder="mysupermail@mail.com"/> 
                                 </p>
                                 <p> 
                                     <label for="passwordsignup" class="youpasswd" data-icon="p"><fmt:message key="singup.label.password" /> </label>
-                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                    <input id="passwordsignup" name="passwordsignup" required type="password" placeholder="eg. X8df!90EO" onchange="form.confnewpassword.pattern = this.value;"/>
                                 </p>
                                 <p> 
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p"><fmt:message key="singup.label.password.confirm" /> </label>
-                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required pattern title="<fmt:message key="login.warning.required.password" />" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
                                 <p class="signin button"> 
 									<input type="submit" value=<fmt:message key="singup.button.signup"/>/> 
