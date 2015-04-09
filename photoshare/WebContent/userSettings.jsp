@@ -59,7 +59,7 @@
                                 </p>
                                 <p> 
                                     <label for="confnewpassword" class="confnewpassword" data-icon="p"><fmt:message key="user.settings.confirm.newpass" /></label>
-                                    <input id="confnewpassword" name="confnewpassword" required pattern title="Passwords don't match" type="password" > 
+                                    <input id="confnewpassword" name="confnewpassword" required pattern title="<fmt:message key="login.warning.required.password" />" type="password" > 
                                 </p>
                                 <p class="Change Password button"> 
                                     <input type="submit" value="<fmt:message key="user.settings.execute" />" /> 

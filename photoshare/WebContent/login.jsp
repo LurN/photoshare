@@ -82,7 +82,7 @@
                                 </p>
                                 <p> 
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p"><fmt:message key="singup.label.password.confirm" /> </label>
-                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required pattern title="Passwords don't match" type="password" placeholder="eg. X8df!90EO"/>
+                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required pattern title="<fmt:message key="login.warning.required.password" />" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
                                 <p class="signin button"> 
 									<input type="submit" value=<fmt:message key="singup.button.signup"/>/> 
