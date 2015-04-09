@@ -18,9 +18,8 @@
 					// Give unique IDs to each image
 					int i = 0;
 					for (String path : listOfPics) {
-						String sub = path.substring(path.indexOf("Photos\\"));
-						
-						out.println("<li class=\"photo\" name=\"" + sub.substring(7) + "\" id=\"photo" + ++i + "\"><img src=http://localhost:8080/photoshare/"+sub+" width=100% height=auto /></li>");
+						System.out.println(path);
+						out.println("<li class=\"photo\" id=\"photo" + ++i + "\"><img src=http://localhost:8080/photoshare"+path.substring(52)+" width=100% height=auto /></li>");
 					}
 				%>
 				

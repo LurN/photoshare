@@ -122,7 +122,7 @@ public class AccountDao {
 
 			if (!accountExists(userName))
 				pstAdd = conn
-						.prepareStatement("INSERT INTO form.account (accountCreationDate, username, password, email)"
+						.prepareStatement("INSERT INTO `form`.`account` (`accountCreationDate`, `username`, `password`, `email`)"
 								+ "VALUES (?, ?, ?, ?)");
 			pstAdd.setString(1,
 					new String(new Date(System.currentTimeMillis()).toString()));
@@ -331,14 +331,14 @@ public class AccountDao {
 		return null;
 	}
 
-	public ArrayList<String> getAccountPics(String name) {
+	public ArrayList<String> getAccountPics(String name){
 		
 		ArrayList<String> listOfPics = new ArrayList<String>();
 		PreparedStatement getPics = null;
 		ResultSet rsPics = null;
 		
 		try {
-			getPics = conn.prepareStatement("SELECT location FROM form.photos WHERE photos.userID = ? AND photos.isDeleted <> 1");
+			getPics = conn.prepareStatement("SELECT location FROM `form`.`photos` WHERE `photos`.`userID` = ?"); // AND `photos`.`isDeleted` <> true
 			getPics.setString(1, String.valueOf(getAccountId(name)));
 			
 			rsPics = getPics.executeQuery();
@@ -368,7 +368,7 @@ public class AccountDao {
 		ResultSet rsPics = null;
 		
 		try {
-			getPics = conn.prepareStatement("SELECT location FROM form.photos WHERE form.photos.isDeleted <> true");
+			getPics = conn.prepareStatement("SELECT location FROM `form`.`photos`");
 			
 			rsPics = getPics.executeQuery();
 			System.out.println(rsPics);
@@ -387,5 +387,23 @@ public class AccountDao {
 		}
 		
 		return listOfPics;
+	}
+	
+	/* Delete an existing photo. Sets isDeleted flag, image and database entry remain. */
+	public void deletePhoto(String filename, String username) {
+		/* Invalid parameters */
+		if(filename == null || username == null)
+			return;
+		
+		PreparedStatement deleteQuery = null;
+		
+		try {
+			deleteQuery = conn.prepareStatement("UPDATE `form`.`photos` SET `isDeleted`=true WHERE `photos`.`userID` = ?");
+			deleteQuery.setString(1,  String.valueOf(getAccountId(username)));
+			
+			deleteQuery.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }	

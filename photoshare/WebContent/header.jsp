@@ -1,18 +1,5 @@
-<%@page import="com.photoshare.servlets.DeletePhotoServlet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
     pageEncoding="ISO-8859-1"%> 
-<%
-	// User isn't logged in, redirect to login
-	if(session.getAttribute("name") == null) {
-	    String redirectURL = "http://localhost:8080/photoshare/login.jsp";
-	    response.sendRedirect(redirectURL);
-	}
-%>
-
-<%
-	// Create deletePhoto object
-	DeletePhotoServlet dps = new DeletePhotoServlet();
-%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -94,11 +81,11 @@
 								<div class="menu_box_list">
 									<ul>
 										<li><a href="home.jsp"><span><fmt:message key="header.menu.home" /></span></a></li>
-										<li><a href="userHome.jsp"><span><fmt:message key="header.menu.userHome" /></span></a></li>
 										<li><a href="#openModal"><span><fmt:message key="header.menu.create.album" /></span></a></li>
 										<li><a href="userSettings.jsp"><span><fmt:message key="header.menu.user.settings" /></span></a></li>
+										<li><a href="#"><span><fmt:message key="header.menu.clients" /></span></a></li>
+										<li><a href="#"><span><fmt:message key="header.menu.blog" /></span></a></li>
 										<li><a href="contact.jsp"><span><fmt:message key="header.menu.contact" /></span></a></li>
-										<li><a href="logout.jsp"><span><fmt:message key="header.menu.logout" /></span></a></li>
 									</ul>
 									<div class="clear"> </div>
 								</div>
@@ -143,13 +130,6 @@
 			</tr>
 		</table>
 		</form>
-	</div>
-</div>
-
-<div id="photoModal" class="modalDialog">
-	<div>
-		<a href="#close" title="Close" class="close">X</a>
-		<img id="photoModalPhoto" />
 	</div>
 </div>
 
