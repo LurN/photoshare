@@ -92,7 +92,7 @@
 										<li><a href="#openModal"><span><fmt:message key="header.menu.create.album" /></span></a></li>
 										<li><a href="userSettings.jsp"><span><fmt:message key="header.menu.user.settings" /></span></a></li>
 										<li><a href="contact.jsp"><span><fmt:message key="header.menu.contact" /></span></a></li>
-										<li><a href="login.jsp"><span><fmt:message key="header.menu.logout" /></span></a></li>
+										<li><a href="logout.jsp"><span><fmt:message key="header.menu.logout" /></span></a></li>
 									</ul>
 									<div class="clear"> </div>
 								</div>
