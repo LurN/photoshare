@@ -24,7 +24,7 @@ window.onload = function() {
 	};
 	
 	/* Photo being hovered */
-	var hoveredPhoto;
+	hoveredPhoto = undefined;
 	
 	/* Change strings based on language */
 	var setLanguage = function() {
@@ -59,12 +59,23 @@ window.onload = function() {
 	
 	/* Delete button click handler */
 	var deletePhotoButtonOnClick = function(e) {
-		$(mainContextMenu.selected).fadeOut(FADE_SLOW, function() {
-			$(mainContextMenu.selected).remove();
-			
-			/* Remove photo from database */
-			mainContextMenu.selected = undefined;
-			hoveredPhoto = undefined;
+		$.ajax({
+			url: "deletePhoto.jsp",
+			data: {
+				photo: $(mainContextMenu.selected).attr("name")
+				},
+			success: function(r) {
+				$(mainContextMenu.selected).fadeOut(FADE_SLOW, function() {
+					$(mainContextMenu.selected).remove();
+					
+					/* Remove photo from database */
+					mainContextMenu.selected = undefined;
+					hoveredPhoto = undefined;
+				});
+			},
+			error: function(r) {
+				alert("Sorry, something went wrong. The photo was not deleted.");
+			}
 		});
 	};
 	
@@ -72,7 +83,6 @@ window.onload = function() {
 	var deleteModalLinkOnClick = function(e) {
 		$(hoveredPhoto).fadeOut(FADE_FAST, function() {
 			$(hoveredPhoto).remove();
-			hoveredPhoto = null;
 		});
 	};
 	

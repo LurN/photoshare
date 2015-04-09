@@ -1,3 +1,4 @@
+<%@page import="com.photoshare.servlets.DeletePhotoServlet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  
     pageEncoding="ISO-8859-1"%> 
 <%
@@ -6,6 +7,11 @@
 	    String redirectURL = "http://localhost:8080/photoshare/login.jsp";
 	    response.sendRedirect(redirectURL);
 	}
+%>
+
+<%
+	// Create deletePhoto object
+	DeletePhotoServlet dps = new DeletePhotoServlet();
 %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
