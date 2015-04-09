@@ -1,8 +1,11 @@
 <%@ include file="header.jsp" %>
-		<div id="main" role="main">
-			<a href="login.jsp"><span>To Login</span></a>
-			<h3>About Us</h3>
-			<h3>Site Developers</h3>
+<div class="container" >
+<div class="content">
+		<div class="wrap">
+			 <div id="main" role="main">
+			 <div id="container_demo" >
+                    <div id="wrapper">
+			<h1>Site Developers</h1>
 			<ul>
 				<li>
 					<ul>
@@ -32,15 +35,11 @@
 						</li>
 					</ul>
 				</li>
-				<li>
-					<ul>
-						<li>Carl Piehl</li>
-						<li>eMail - carl@carl</li>
-						<li>
-							<p>Another instance of co-founder for Photoshare</p>
-						</li>
-					</ul>
-				</li>
 			</ul>
+			</div>
+			</div>
+		</div>
+		</div>
+</div>
 </div>
 <%@ include file="footer.jsp" %>
