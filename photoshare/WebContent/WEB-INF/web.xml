@@ -33,6 +33,14 @@
   	<url-pattern>/userPassword</url-pattern>
   </servlet-mapping>
   <servlet>
+  	<servlet-name>contact</servlet-name>
+  	<servlet-class>com.photoshare.servlets.emailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>contact</servlet-name>
+  	<url-pattern>/contact</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>upload</servlet-name>
     <servlet-class>com.photoshare.utilities.Uploader</servlet-class>
   </servlet>

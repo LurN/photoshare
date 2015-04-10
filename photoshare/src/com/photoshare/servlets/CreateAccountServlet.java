@@ -45,7 +45,7 @@ public class CreateAccountServlet extends HttpServlet {
 			response.sendRedirect("home.jsp");
 		} else {
 			// Invalid username/password
-			out.print("<p style=\"color:red\">Account already exists.</p>");
+			out.print("<p style=\"color:red\"><fmt:message key=\"error.message.account.already.exists\" /></p>");
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 		}

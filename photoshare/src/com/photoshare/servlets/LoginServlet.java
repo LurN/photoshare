@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 			
 		} else {
 			// Invalid username/password
-			out.print("<script>Incorrect username or password</script>");
+			out.print("<p><fmt:message key=\"error.message.incorrect\" /></p>");
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.include(request, response);
 			response.sendRedirect("home.jsp");
