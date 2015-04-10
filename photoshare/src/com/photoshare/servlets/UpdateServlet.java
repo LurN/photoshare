@@ -55,7 +55,7 @@ public class UpdateServlet extends HttpServlet {
 		if(ldao.modifyAccount(userName, email, firstName, lastName, sqlDate)) {
 			response.sendRedirect("userSettings.jsp");
 		} else {
-			out.print("<p style=\"color:red\">Account not modify.</p>");
+			out.print("<div id=\"main\" role=\"main\" style=\"color:red\"><fmt:message key=\"error.message.account.not.modified\" /></div>");
 			RequestDispatcher rd = request.getRequestDispatcher("userSettings.jsp");
 			rd.include(request, response);
 		}

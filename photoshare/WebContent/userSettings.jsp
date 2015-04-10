@@ -1,6 +1,5 @@
 <%@ include file="header.jsp"%>
 <!---start-content---->
-        
 <div class="container" >
 <div class="content">
 			<div class="wrap">
@@ -9,13 +8,8 @@
             <div class="codrops-top">
             </div><!--/ Codrops top bar -->
             <section>
-            	<!--  <div class="menu_box_list">
-									<ul>
-										<li><a href="#userSetting"><span>Account Information</span></a></li>
-										<li><a href="#changePassword"><span>Change Password</span></a></li>
-									</ul>
-									<div class="clear"> </div>
-								</div>-->
+            <div class="equalHWrap eqWrap">
+                    <div class="equalWH eq">
                 <div id="container_demo" >
                     <div id="wrapper">
                         <div id="userSetting" class="animate form">
@@ -46,6 +40,12 @@
 								</p>
                             </form>
                         </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div id="container_demo" >
+                    <div id="wrapper">
+                    <div class="equalWH eq">
 						<div id="userPassword" class="animate form">
                             <form  action="userPassword" autocomplete="on" method="post"> 
                                 <h1><fmt:message key="user.settings.change.password" /></h1> 
@@ -66,7 +66,9 @@
 								</p>
                             </form>
                         </div>
-						
+						</div>
+						</div>
+						</div>
                     </div>
                 </div>  
             </section>

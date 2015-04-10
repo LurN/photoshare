@@ -203,3 +203,6 @@ footer a {
 	color: orange;
 	font-size: 18px;
 }
+
+.eqWrap { display: flex; }
+.equalHW { flex: 1; }
