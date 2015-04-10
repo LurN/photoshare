@@ -37,6 +37,12 @@ public class PasswordChangeServlet extends HttpServlet {
 		String oldPassword = request.getParameter("oldpassword");
 		String oldPassworddb = ldao.getPassword(userName);
 		String newPassword = request.getParameter("newpassword");
+		String confirmOldPassword = request.getParameter("confnewpassword");
+		
+		if(!newPassword.equals(confirmOldPassword)) {
+			response.sendRedirect("userSettings.jsp");
+			out.print("<p>alert(\"Error: Please check that you've entered and confirmed your password!\");</p>");
+		}
 		
 		if(!oldPassword.equals(oldPassworddb)) {
 			response.sendRedirect("userSettings.jsp");
