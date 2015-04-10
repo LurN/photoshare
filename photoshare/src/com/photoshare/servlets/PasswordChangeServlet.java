@@ -41,18 +41,18 @@ public class PasswordChangeServlet extends HttpServlet {
 		
 		if(!newPassword.equals(confirmOldPassword)) {
 			response.sendRedirect("userSettings.jsp");
-			out.print("<p>alert(\"Error: Please check that you've entered and confirmed your password!\");</p>");
+			out.print("<div id=\"main\" role=\"main\" style=\"color:red\"><fmt:message key=\"error.message.confirm.password\" /></div>");
 		}
 		
 		if(!oldPassword.equals(oldPassworddb)) {
 			response.sendRedirect("userSettings.jsp");
-			out.print("<p style=\"color:red\">Incorrect Password.</p>");
+			out.print("<div id=\"main\" role=\"main\" style=\"color:red\"><fmt:message key=\"error.message.incorrect.password\" /></div>");
 		} else
 		
 		if(ldao.modifyPassword(userName, newPassword)) {
 			response.sendRedirect("userSettings.jsp");
 		} else {
-			out.print("<p style=\"color:red\">Account not modified.</p>");
+			out.print("<div id=\"main\" role=\"main\" style=\"color:red\"><fmt:message key=\"error.message.account.not.modified\" /></div>");
 			RequestDispatcher rd = request.getRequestDispatcher("userSettings.jsp");
 			rd.include(request, response);
 		}
