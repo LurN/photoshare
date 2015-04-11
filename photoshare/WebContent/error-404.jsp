@@ -1,11 +1,10 @@
+<!-- 404 Error page -->
 <%@ include file="header.jsp" %>
 <%@ page isErrorPage="true"%>
 
 <link rel="stylesheet" type="text/css" href="./css/modifyPhoto.css">
 
-<!---start-content---->
 <div class="content">
-			
 	<div class="wrap" style="text-align: center;">
 		<div id="main" role="main">
 		<br /><br /><br />

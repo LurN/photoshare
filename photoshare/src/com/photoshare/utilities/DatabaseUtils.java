@@ -1,3 +1,9 @@
+/**
+ * File: DatabaseUtils.java
+ * 
+ * Description: Utilities to use and modify the database.
+ */
+
 package com.photoshare.utilities;
 
 import java.io.FileNotFoundException;
@@ -9,15 +15,17 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseUtils {
-
-	
 	
 	private static Connection conn = null;
 	
-	public static Connection getConnection(){
-		if(conn != null)
+	/**
+	 * Get a database connection object.
+	 * @return connection object used to connect to database
+	 */
+	public static Connection getConnection() {
+		if(conn != null) {
 			return conn;
-		else{
+		} else {
 			try {
 				Properties propertiesFile = new Properties();
 				InputStream inputStream = DatabaseUtils.class.getClassLoader().getResourceAsStream("/database.properties");
@@ -56,9 +64,4 @@ public class DatabaseUtils {
 		}
 		
 	}//end getConnection
-	
-	
-	
-	
-	
 }

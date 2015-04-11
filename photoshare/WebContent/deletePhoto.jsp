@@ -1,3 +1,4 @@
+<!-- Call delete photo doPost to delete a photo -->
 <%@page import="com.photoshare.servlets.DeletePhotoServlet"%>
 <%
 	// Delete the desired photo

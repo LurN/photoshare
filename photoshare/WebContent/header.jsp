@@ -38,8 +38,10 @@
   		<link rel="stylesheet" href="css/login.css">
   		<link rel="stylesheet" type="text/css" href="css/animate-custom.css"/>
   		<!-- //Global CSS for the page and tiles -->
+  		
 		<!---start-click-drop-down-menu----->
 		<script src="js/jquery.min.js"></script>
+		
         <!----start-dropdown--->
          <script type="text/javascript">
 			var $ = jQuery.noConflict();
@@ -63,6 +65,7 @@
 			});
 		</script>
         <!----//End-dropdown--->
+        
 		<!---//End-click-drop-down-menu----->
 	</head>
 	<body>
@@ -124,6 +127,7 @@
 				<div class="clear"> </div>
 			</div>
 		</div>
+		
 <!-- Modal upload photos box -->
 <div id="openModal" class="modalDialog">
 	<div>
@@ -148,72 +152,4 @@
 		<img id="photoModalPhoto" />
 	</div>
 </div>
-
-<!-- Modal delete photos box -->
-<!--
-<div id="deleteModal" class="modalDialog">
-	<div>
-		<a href="#close" title="Close" class="close">X</a>
-			<span>
-				Are you sure?<br />
-			</span>
-			<input type="submit" value="Delete" />
-			<input type="button" name="Cancel" />
-	</div>
-</div>
--->
-
-<!-- Upload files script 
-<script>
-var urlUploadCount = 1;
-
-function addURLUpload() {
-	++urlUploadCount;
-	
-	var url_upload = document.createElement("input");
-	url_upload.class = "url_upload";
-	url_upload.placeholder = "URL to photo";
-	
-	var list = document.getElementById("url_upload_list");
-	
-	list.appendChild(url_upload);
-	
-	document.getElementById("remove_url_upload").style.display = "inline-block";
-};
-
-function removeURLUpload() {
-	--urlUploadCount;
-	
-	var list = document.getElementById("url_upload_list");
-	
-	list.removeChild(list.lastChild);
-	
-	if(urlUploadCount === 1)
-		document.getElementById("remove_url_upload").style.display = "none";
-};
-
- function uploadToServer(formData) {
-
-    //Uncomment when you server ready
-
-    xhr = new XMLHttpRequest();
-    xhr.open("post", "http://localhost:8080/photoshare/fileUpload", true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-            alert(xhr.responseText);
-        }
-    };
-    xhr.send(formData);
-
-}
- 
- function uploadImage() {
-
-     var data = new FormData();
-     data.append("file", this.image_upload);
-     this.uploadToServer(data);
-
- }
-</script>
--->
 		<!---//End-header---->

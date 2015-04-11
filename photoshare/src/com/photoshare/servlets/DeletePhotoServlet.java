@@ -1,3 +1,9 @@
+/**
+ * File: DeletePhotoServlet.java
+ * 
+ * Description: Facilitates deletion of images within the database.
+ */
+
 package com.photoshare.servlets;
 
 import java.io.IOException;
@@ -20,14 +26,19 @@ public class DeletePhotoServlet extends HttpServlet {
 
 	private Connection conn = DatabaseUtils.getConnection();
 
+	/**
+	 * Set isDeleted flag to true for requested photo.
+	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		// Get photo title
 		String photoId = request.getParameter("photo");
 		
 		PreparedStatement deletePhoto = null;
 		
 		try {
+			// Find photo in database with wildcards and set flag
 			deletePhoto = conn.prepareStatement("UPDATE form.photos SET isDeleted = true WHERE location LIKE ?");
 			deletePhoto.setString(1, "%" + photoId + "%");
 			deletePhoto.executeUpdate();

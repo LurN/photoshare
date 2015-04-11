@@ -1,5 +1,4 @@
 <%@ include file="header.jsp" %>
-<div class="container" >
 <div class="content">
 		<div class="wrap">
 			 <div id="main" role="main">

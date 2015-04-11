@@ -1,9 +1,8 @@
-Course: Web Application Programming
+Course: CST8218: Web Application Programming
 
-Project name: photoshare
+Project name: PhotoShare
 
 Members:
 Luke Bailey
 Fred Proulx
 Andrew Polidori
-Carl Piehl

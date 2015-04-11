@@ -1,3 +1,9 @@
+/**
+ * File: Uploader.java
+ * 
+ * Description: Allows uploading an image to the server and adding it to the database.
+ */
+
 package com.photoshare.utilities;
 
 import java.io.File;
@@ -35,46 +41,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Servlet implementation class FileUpload
- */
 @WebServlet("/FileUpload")
 @MultipartConfig
 public class Uploader extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Connection conn = DatabaseUtils.getConnection();
-
-	/**
-	 * 
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public Uploader() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	
+	/**
+	 * Upload an image to the server.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();     
 
+        // For each part, upload the photo and add to database
         for (Part part : request.getParts()) {
             String name = part.getName();
             String contentType = part.getContentType();
+            
             out.println(contentType);
             
+            // Wrong image types
             if(!contentType.equals("image/png")) {
                 out.println("Only png format supported!");
                 break;
@@ -85,7 +71,6 @@ public class Uploader extends HttpServlet {
             File uploadDir = new File("C:\\Users\\Andrew\\git\\photoshare\\photoshare\\WebContent\\Photos\\");
             System.out.println("UploadDir:"+uploadDir);
             File file = File.createTempFile("img", ".PNG", uploadDir);
-           
 
             FileOutputStream fos = new FileOutputStream(file);
 
@@ -93,110 +78,24 @@ public class Uploader extends HttpServlet {
             while ((data = is.read()) != -1) {
                 fos.write(data);
             }
-
             
             String path = file.getAbsolutePath();
             fos.close();
             
-            System.out.println("File uploaded.");
-            System.out.println("Hello ANDREW");
-            
             PreparedStatement pst = null;
-    		//ResultSet rs = null;
     		
+            // Add entry to database
     		try {
-    			pst = conn.prepareStatement("INSERT into `form`.`photos` (`userID`, `location`) VALUES (?,?)");
+    			pst = conn.prepareStatement("INSERT into form.photos (userID, location) VALUES (?,?)");
     			pst.setString(1, request.getSession().getAttribute("id").toString());
     			pst.setString(2, path);
-    			
-    			
-    			
     			pst.executeUpdate();
-    			
-
     		} catch (Exception e) {
     			e.printStackTrace();
-    			System.out.println("Inside uploader doPost");
-    		
     		}
-    		
-            
         }
         
+        // Send the user to the home page
         response.sendRedirect("home.jsp");
     }
-	
-	/*
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		PrintWriter out = response.getWriter();
-		HttpSession httpSession = request.getSession();
-		String filePathUpload = (String) httpSession.getAttribute("path") != null ? httpSession
-				.getAttribute("path").toString() : "";
-
-		String path1 = filePathUpload;
-		String filename = null;
-		File path = null;
-		
-
-		 
-
-		if (ServletFileUpload.isMultipartContent(request)) {
-			FileItemFactory factory = new DiskFileItemFactory();
-			ServletFileUpload upload = new ServletFileUpload(factory);
-			
-			
-				
-			
-			String FieldName = "";
-			try {
-				
-				List items = upload.parseRequest(request);
-				Iterator iterator = items.iterator();
-				while (iterator.hasNext()) {
-					FileItem item =  (FileItem) iterator.next();
-
-					if (!item.isFormField()) {
-						
-						filename = item.getName();
-						
-						path = new File(path1 + File.separator);
-						if (!path.exists()) {
-							boolean status = path.mkdirs();
-						}
-						//START OF CODE FRO PRIVILEDGE 
-
-						File uploadedFile = new File(path + filename); // for
-																		// copy
-																		// file
-						item.write(uploadedFile);
-					} else {
-						String f1 = item.getName();
-					}
-
-				} // END OF WHILE
-				response.sendRedirect("welcome.jsp");
-
-			} catch (FileUploadException e) {
-				e.printStackTrace();
-			} catch (Exception ef) {
-				ef.printStackTrace();
-			}
-		}
-	}*/
-
-	/*private String getFileName(Part part) {
-		for (String cd : part.getHeader("content-disposition").split(";")) {
-			if (cd.trim().startsWith("filename")) {
-				String fileName = cd.substring(cd.indexOf('=') + 1).trim()
-						.replace("\"", "");
-				return fileName.substring(fileName.lastIndexOf('/') + 1)
-						.substring(fileName.lastIndexOf('\\') + 1); // MSIE fix.
-			}
-		}
-		return null;
-	}*/
-
 }

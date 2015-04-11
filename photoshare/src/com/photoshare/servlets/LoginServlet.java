@@ -1,3 +1,8 @@
+/**
+ * File: LoginServlet.java
+ * 
+ * Description: Servlet used to login.
+ */
 
 package com.photoshare.servlets;
 
@@ -13,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.photoshare.dao.AccountDao;
-//import com.photoshare.models.Account;
 
 public class LoginServlet extends HttpServlet {
 
@@ -26,21 +30,23 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	@Override
+	/**
+	 * Post called to login user.
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
+		// Get parameters from Post
 		String userName = request.getParameter("username");
 		String pass = request.getParameter("password");
-		
 
 		HttpSession session = request.getSession(false);
 
 		if (session != null)
 			session.setAttribute("name", userName);
-
 
 		// Valid username/password
 		if(ldao.validate(userName, pass)) {
@@ -51,15 +57,14 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("firstName", ldao.getFirstName(userName));
 				session.setAttribute("lastName", ldao.getLastName(userName));
 				session.setAttribute("id", ldao.getAccountId(userName));
+				
 				try {
 					session.setAttribute("birthDate", ldao.getBirthDate(userName));
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				}
-			
+			}
 		} else {
 			// Invalid username/password
 			out.print("<p><fmt:message key=\"error.message.incorrect\" /></p>");
@@ -68,8 +73,6 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("home.jsp");
 		}
 		
-			
-
 		out.close();
 	}
 }
